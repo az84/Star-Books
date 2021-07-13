@@ -11,4 +11,7 @@ h1 {
 
 nav a{
     color: white;
+    font-size: 18px;;
+    transition: .25s;
 }
+
