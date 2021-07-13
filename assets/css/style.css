@@ -13,5 +13,6 @@ nav a{
     color: white;
     font-size: 18px;;
     transition: .25s;
+    font-weight: bold;
 }
 
