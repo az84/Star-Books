@@ -23,8 +23,15 @@ function getApi(event) {
           var resultsText = document.createElement('li');
           resultsText.textContent = response.items[i].volumeInfo.title
           resultsSec.append(resultsText)
+
+          var linkText = document.createElement('a');
+          linkText.textContent = "Click Here"
+          linkText.href = response.items[i].volumeInfo.infoLink
+          resultsSec.append(linkText)
+
           //console.log(response.items[i].volumeInfo);
-          console.log(response.items[i].volumeInfo.title);
+          console.log(response.items[i].volumeInfo.imageLinks.thumbnail);
+          console.log(response.items[i].volumeInfo.infoLink);
           //console.log(response.items[i].volumeInfo.industryIdentifiers)
         }
         if (searchInput != "") {
