@@ -1,0 +1,132 @@
+
+
+header {
+    background: #30C5BE;
+}
+
+h1 {
+    color: #F5C8A3;
+    padding-left: 30px;
+}
+
+nav a{
+    color: white;
+    font-size: 18px;;
+    transition: .25s;
+    font-weight: bold;
+}
+
+:root {
+    --base-color: rgb(238, 238, 238);
+    --base-color-primary: #fff;
+    --primary-color: rgb(92, 64, 168);
+    --secondar-color:orange;
+    --gray-color-light: rgb(202, 202, 202);
+    --gray-color-dark: #000000;
+    --button-primary-color: rgb(128, 0, 75);
+    --button-secondary-color: grey;
+}
+
+/* About us */
+.results-section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+/* bestseller */
+.bestseller {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 60%;
+}
+
+/* search */
+.search_books {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search_books {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.search_books div {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_books input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--gray-color-light);
+}
+
+.search_books textarea {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--gray-color-light);
+}
+
+.search_books button {
+    padding: 10px 20px;
+    color: var(--base-color);
+    background-color: var(--button-primary-color);
+    border: 2px solid var(--button-secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search_books button:hover {
+    background-color: var(--button-secondary-color);
+}
+
+/* Footer */
+footer {
+    margin-top: 10px;
+    padding: 30px 0;
+    background-color: rgb(228, 228, 228);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Media queries styles */
+@media only screen and (min-width: 768px) {
+    header {
+        padding: 20px;
+    }
+    .about-us {
+        width: 60%;
+    }
+    .search-books input {
+        width: 450px;
+    }
+    .search-books textarea {
+        width: 450px;
+    }
+    @media only screen and (max-width: 1024px) {
+        .bestseller {
+            width: 90%;
+        }
+    }
+}
