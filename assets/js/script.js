@@ -5,7 +5,7 @@ var resultsSec = $("#results-section")
 
 function getApi(event) {
   event.preventDefault()
-  var searchInput = $("#searchBar").val();
+  var searchInput = $("#search-bar").val();
   console.log(searchInput)
     var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput + "&key=AIzaSyA3C3fX17i43ey6iVthUwijF1A1MySz0lU";
     fetch(requestUrl)
