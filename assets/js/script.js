@@ -25,12 +25,16 @@ function getApi(event) {
           resultsSec.append(resultsText)
 
           var linkText = document.createElement('a');
-          linkText.textContent = "Click Here"
+          linkText.textContent = "  Click Here"
           linkText.href = response.items[i].volumeInfo.infoLink
-          resultsSec.append(linkText)
+          resultsText.append(linkText)
 
           //console.log(response.items[i].volumeInfo);
           console.log(response.items[i].volumeInfo.imageLinks.thumbnail);
+          var thumbImg = document.createElement('img');
+          thumbImg.src = response.items[i].volumeInfo.imageLinks.thumbnail
+          resultsSec.append(thumbImg)
+
           console.log(response.items[i].volumeInfo.infoLink);
           //console.log(response.items[i].volumeInfo.industryIdentifiers)
         }
