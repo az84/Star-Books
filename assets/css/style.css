@@ -107,9 +107,19 @@ li {
     padding: 20px;
 }
 
+#favorites {
+    border-left: 1px solid black;
+    height: 100vh;
+}
+
+#favorites h2 {
+    font-size: 30px;
+    padding: 10px;
+}
+
 /* Footer */
 footer {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding: 30px 0;
     background-color: rgb(228, 228, 228);
     height: 100px;

@@ -27,27 +27,44 @@
         </div>
     </header>
     <main>
-        </section>
-        <section id="search_books" class="search_books">
-            <h2>Search for Books</h2>
-            <p>Search for a topic below and see what books are available!</p>
-            <div>
-                <input id="search-bar" type="text">
-            </div>
-            <div>
-                <button id="search-btn" type="button" class="button">Search</button>
-            </div>
-        </section>
+        <div class="grid-container full">
+            <div class="grid-x">
+                <div class="cell small-10">
+                    <section id="search_books" class="search_books">
+                        <h2>Search for Books</h2>
+                        <p>Search for a topic below and see what books are available!</p>
+                        <div>
+                            <input id="search-bar" type="text">
+                        </div>
+                        <div>
+                            <button id="search-btn" type="button" class="button">Search</button>
+                        </div>
+                    </section>
 
-        <section id="results-section" class="results-section">
-            <h2>Results</h2>
-            <ul id="list-results"></ul>
-        </section>
-        <section id="bestseller" class="bestseller">
-            <h2>Best Seller</h2>
-            <div class="list">
+                    <section id="results-section" class="results-section">
+                        <h2>Results</h2>
+                        <ul id="list-results"></ul>
+                    </section>
+                    <section id="bestseller" class="bestseller">
+                        <h2>Best Seller</h2>
+                        <div class="list">
+                        </div>
+                    </section>
+                </div>
+                <div id="favorites" class="cell small-2 grid-x">
+                    <div class="cell grid-y align-middle">
+                        <h2>Favorites</h2>
+
+                        <ul>
+                            <li>Item</li>
+                            <li>Item</li>
+                            <li>Item</li>
+                            <li>Item</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
     <footer>
 
