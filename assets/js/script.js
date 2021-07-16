@@ -21,13 +21,13 @@ function getApi(event) {
       console.log(response.items);
       for (var i = 0; i < response.items.length; i++) {
         var bookCard = document.createElement('li');
-        bookCard.setAttribute('class', 'card');
+        bookCard.setAttribute('class', 'card cell small-2');
 
-        // var resultsText = document.createElement('li');
-        // resultsText.textContent = response.items[i].volumeInfo.title;
+
 
         var linkBook = document.createElement('a');
         linkBook.href = response.items[i].volumeInfo.infoLink;
+        linkBook.setAttribute('target', '_blank');
         bookCard.append(linkBook);
 
         //console.log(response.items[i].volumeInfo);
@@ -37,7 +37,9 @@ function getApi(event) {
         thumbImg.src = response.items[i].volumeInfo.imageLinks.thumbnail;
         linkBook.append(thumbImg);
 
-        // bookCard.append(resultsText);
+        // var favoriteEl = document.createElement('span');
+        // favoriteEl.textContent = ''
+
         resultsList.append(bookCard);
 
         console.log(response.items[i].volumeInfo.infoLink);
