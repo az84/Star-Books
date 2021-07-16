@@ -27,6 +27,11 @@ nav a{
     --button-secondary-color: grey;
 }
 
+/* Off-canvas button toggle */
+button[data-toggle="offCanvas"] {
+    float: right;
+}
+
 /* About us */
 .results-section {
     padding: 20px;
@@ -100,6 +105,7 @@ nav a{
     background-color: var(--button-secondary-color);
 }
 
+/* Results stylings */
 #results-section li {
     list-style: none;
 }
