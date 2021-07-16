@@ -3,6 +3,14 @@ var searchButton = $("#search-btn");
 //var resultsText = $("#results-list");
 var resultsList = $("#list-results");
 
+var clearSearch = $("#clear")
+function clear(event) {
+  event.preventDefault()
+  resultsList.empty();
+}
+
+clearSearch.on('click', clear);
+
 function getApi(event) {
   event.preventDefault()
   var searchInput = $("#search-bar").val();
