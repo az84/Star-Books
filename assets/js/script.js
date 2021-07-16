@@ -20,25 +20,24 @@ function getApi(event) {
       //console.log(response.totalItems);
       console.log(response.items);
       for (var i = 0; i < response.items.length; i++) {
-        var bookCard = document.createElement('div');
+        var bookCard = document.createElement('li');
         bookCard.setAttribute('class', 'card');
 
+        // var resultsText = document.createElement('li');
+        // resultsText.textContent = response.items[i].volumeInfo.title;
 
-        var resultsText = document.createElement('li');
-        resultsText.textContent = response.items[i].volumeInfo.title;
-
-        var linkText = document.createElement('a');
-        linkText.textContent = "  Click Here";
-        linkText.href = response.items[i].volumeInfo.infoLink;
-        resultsText.append(linkText);
+        var linkBook = document.createElement('a');
+        linkBook.href = response.items[i].volumeInfo.infoLink;
+        bookCard.append(linkBook);
 
         //console.log(response.items[i].volumeInfo);
         console.log(response.items[i].volumeInfo.imageLinks.thumbnail);
         var thumbImg = document.createElement('img');
+        thumbImg.setAttribute('alt', `${response.items[i].volumeInfo.title}`)
         thumbImg.src = response.items[i].volumeInfo.imageLinks.thumbnail;
-        bookCard.append(thumbImg);
+        linkBook.append(thumbImg);
 
-        bookCard.append(resultsText);
+        // bookCard.append(resultsText);
         resultsList.append(bookCard);
 
         console.log(response.items[i].volumeInfo.infoLink);
