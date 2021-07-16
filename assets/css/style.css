@@ -100,10 +100,34 @@ nav a{
     background-color: var(--button-secondary-color);
 }
 
+#results-section li {
+    list-style: none;
+}
+
+#list-results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#list-results .card {
+    background-color: #30c5be69;
+    border-radius: 5px;
+    margin: 20px;
+    width: 150px;
+    height: 300px;
+    padding: 15px;
+}
+
+#list-results img {
+    height: 270px;
+    width: 105%;
+}
+
 li {
     font-size: 15px;
     font-weight: bold;
-    background-color: #30C5BE;
     padding: 20px;
 }
 
