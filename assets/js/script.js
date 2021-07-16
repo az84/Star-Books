@@ -1,7 +1,7 @@
 var searchButton = $("#search-btn");
 //var searchInput = $("#searchBar").val();
 //var resultsText = $("#results-list");
-var resultsSec = $("#results-section")
+var resultsList = $("#list-results");
 
 function getApi(event) {
   event.preventDefault()
@@ -22,7 +22,7 @@ function getApi(event) {
       for (var i = 0; i < response.items.length; i++) {
         var bookCard = document.createElement('div');
         bookCard.setAttribute('class', 'card');
-        bookCard.setAttribute('style', 'width: 150px')
+
 
         var resultsText = document.createElement('li');
         resultsText.textContent = response.items[i].volumeInfo.title;
@@ -39,7 +39,7 @@ function getApi(event) {
         bookCard.append(thumbImg);
 
         bookCard.append(resultsText);
-        resultsSec.append(bookCard);
+        resultsList.append(bookCard);
 
         console.log(response.items[i].volumeInfo.infoLink);
         //console.log(response.items[i].volumeInfo.industryIdentifiers)
