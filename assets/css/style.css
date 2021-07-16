@@ -32,6 +32,24 @@ button[data-toggle="offCanvas"] {
     float: right;
 }
 
+.off-canvas {
+    /* background-color:rgba(56, 150, 163, 0.849); */
+    background-color:rgb(56, 150, 163);
+
+    /* background-color: rgb(7, 30, 34); */
+}
+
+#favorites {
+    border-left: 1px solid black;
+    height: 100vh;
+}
+
+#favorites h2 {
+    font-size: 30px;
+    padding: 10px;
+    color: #F5C8A3;
+}
+
 /* About us */
 .results-section {
     padding: 20px;
@@ -135,16 +153,6 @@ li {
     font-size: 15px;
     font-weight: bold;
     padding: 20px;
-}
-
-#favorites {
-    border-left: 1px solid black;
-    height: 100vh;
-}
-
-#favorites h2 {
-    font-size: 30px;
-    padding: 10px;
 }
 
 /* Footer */
