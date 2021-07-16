@@ -23,7 +23,7 @@ nav a{
     --secondar-color:orange;
     --gray-color-light: rgb(202, 202, 202);
     --gray-color-dark: #000000;
-    --button-primary-color: rgb(128, 0, 75);
+    --button-primary-color: rgb(56, 151, 163);
     --button-secondary-color: grey;
 }
 
@@ -52,7 +52,7 @@ nav a{
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 }
 
@@ -74,7 +74,7 @@ nav a{
 }
 
 .search_books input {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid var(--gray-color-light);
