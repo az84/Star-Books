@@ -155,21 +155,6 @@ li {
     padding: 20px;
 }
 
-#favorites {
-    border-left: 1px solid black;
-    height: 100vh;
-}
-
-#favorites h2 {
-    font-size: 30px;
-    padding: 10px;
-}
-
-#list-results {
-    display: flex;
-    flex-direction: row;
-}
-
 /* Footer */
 footer {
     /* margin-top: 10px; */
