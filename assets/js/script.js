@@ -8,7 +8,6 @@ function clear(event) {
   event.preventDefault()
   resultsList.empty();
 }
-
 clearSearch.on('click', clear);
 
 function getApi(event) {
@@ -64,4 +63,23 @@ function getApi(event) {
 }
 searchButton.on('click', getApi);
 
+var bestSellersList = $("best-seller-list-results")
+var requestUrlNyt = "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?&api-key=sRQWJNPgmG9zigAss0SflGl9oOG4nTnU"
+function getNytApi(requestUrlNyt) {
+  fetch(requestUrlNyt)
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(response) {
+    console.log(response)
+    //response.results.books.forEach(title => console.log(title));
+    var title;
+    for (var i = 0; i < response.results.books.length; i++) {
+      //console.log(response.results.books[i].title)
+      title = response.results.books[i].title;
+      console.log(title)
+    }
+  })
+}
 
+getNytApi(requestUrlNyt);
