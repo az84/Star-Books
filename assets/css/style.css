@@ -23,8 +23,31 @@ nav a{
     --secondar-color:orange;
     --gray-color-light: rgb(202, 202, 202);
     --gray-color-dark: #000000;
-    --button-primary-color: rgb(128, 0, 75);
+    --button-primary-color: rgb(56, 151, 163);
     --button-secondary-color: grey;
+}
+
+/* Off-canvas button toggle */
+button[data-toggle="offCanvas"] {
+    float: right;
+}
+
+.off-canvas {
+    /* background-color:rgba(56, 150, 163, 0.849); */
+    background-color:rgb(56, 150, 163);
+
+    /* background-color: rgb(7, 30, 34); */
+}
+
+#favorites {
+    border-left: 1px solid black;
+    height: 100vh;
+}
+
+#favorites h2 {
+    font-size: 30px;
+    padding: 10px;
+    color: #F5C8A3;
 }
 
 /* About us */
@@ -52,7 +75,7 @@ nav a{
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 }
 
@@ -74,7 +97,7 @@ nav a{
 }
 
 .search_books input {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid var(--gray-color-light);
@@ -100,6 +123,7 @@ nav a{
     background-color: var(--button-secondary-color);
 }
 
+/* Results stylings */
 #results-section li {
     list-style: none;
 }
@@ -131,6 +155,7 @@ li {
     padding: 20px;
 }
 
+<<<<<<< HEAD
 #favorites {
     border-left: 1px solid black;
     height: 100vh;
@@ -146,6 +171,8 @@ li {
     flex-direction: row;
 }
 
+=======
+>>>>>>> a754f9c132c27a69e598601c26273d822abb2f52
 /* Footer */
 footer {
     /* margin-top: 10px; */
