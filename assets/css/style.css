@@ -4,12 +4,11 @@ header {
     background: #30C5BE;
 }
 /* H1 booksearch styles */
-@import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap');
 h1 {
     color: #F5C8A3;
     padding-left: 30px;
-    text-shadow: 0 0 5px yellow,
-                 0 0 10px yellow;
+    text-shadow: 0 0 5px var(--secondar-color),
+                 0 0 10px var(--base-color);
 }
 
 nav a{
