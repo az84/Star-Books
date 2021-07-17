@@ -10,6 +10,7 @@ function clear(event) {
 }
 clearSearch.on('click', clear);
 
+
 function getApi(event) {
   event.preventDefault()
   var searchInput = $("#search-bar").val();
