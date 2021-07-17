@@ -177,13 +177,16 @@ li {
 
 /* Footer */
 footer {
-    /* margin-top: 10px; */
+    position: absolute; 
+    bottom: 0; left: 0; right: 0;
+    margin-top: 10px;
     padding: 30px 0;
     background-color: rgb(228, 228, 228);
     height: 100px;
     display: flex;
     justify-content: center;
 }
+
 
 /* Media queries styles */
 @media only screen and (min-width: 768px) {
