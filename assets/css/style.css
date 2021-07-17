@@ -26,7 +26,10 @@ nav a{
     --button-primary-color: rgb(56, 151, 163);
     --button-secondary-color: grey;
 }
-
+* {
+    margin: 0;
+    padding: 0;
+}
 /* Off-canvas button toggle */
 button[data-toggle="offCanvas"] {
     float: right;
@@ -110,7 +113,7 @@ button[data-toggle="offCanvas"] {
     border: 1px solid var(--gray-color-light);
 }
 
-.search_books button {
+.search-btn {
     padding: 10px 20px;
     color: var(--base-color);
     background-color: var(--button-primary-color);
@@ -119,8 +122,25 @@ button[data-toggle="offCanvas"] {
     cursor: pointer;
 }
 
-.search_books button:hover {
+.search-btn:hover {
     background-color: var(--button-secondary-color);
+}
+
+.clear {
+    padding: 10px 20px;
+    color: var(--base-color);
+    background-color: var(--button-primary-color);
+    border: 2px solid var(--button-secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clear:hover {
+    background-color: var(--button-secondary-color);
+}
+
+#wrapper {
+    display: inline;
 }
 
 /* Results stylings */
