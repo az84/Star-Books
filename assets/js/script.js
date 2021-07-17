@@ -4,6 +4,7 @@ var searchButton = $("#search-btn");
 var resultsList = $("#list-results");
 var resultCard = $(".result-card");
 var favoriteLabel = $('.label');
+var storageArr = [];
 
 var clearSearch = $("#clear")
 function clear(event) {
@@ -64,7 +65,7 @@ function getApi(event) {
     });
 }
 searchButton.on('click', getApi);
- 
+
 
 var bestSellersList = $("best-seller-list-results")
 var requestUrlNyt = "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?&api-key=sRQWJNPgmG9zigAss0SflGl9oOG4nTnU"
@@ -88,5 +89,9 @@ function getNytApi(requestUrlNyt) {
 getNytApi(requestUrlNyt);
 
 resultsList.on('click', '.label', function () {
+  console.log($(this).parent());
+  // storageArr = storageArr.concat($(this).parent());
+  // console.log(storageArr);
+  // localStorage.setItem('book', $(this).parent());
   console.log('click');
 })
