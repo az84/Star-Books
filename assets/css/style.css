@@ -4,7 +4,7 @@ header {
     background: #30C5BE;
 }
 /* H1 booksearch styles */
-@import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap'); */
 h1 {
     color: #F5C8A3;
     padding-left: 30px;
@@ -43,7 +43,7 @@ button[data-toggle="offCanvas"] {
 }
 
 #favorites {
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
     height: 100vh;
 }
 
@@ -162,6 +162,7 @@ button[data-toggle="offCanvas"] {
     width: 200px;
     height: 300px;
     padding: 15px;
+    position: relative;
 }
 
 #list-results img {
@@ -169,14 +170,16 @@ button[data-toggle="offCanvas"] {
     width: 105%;
 }
 
+.label {
+    position: absolute;
+    width: 50%;
+}
+
 li {
     font-size: 15px;
     font-weight: bold;
     padding: 20px;
 }
-
-
-
 /* Media queries styles */
 @media only screen and (min-width: 768px) {
     header {
