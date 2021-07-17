@@ -2,6 +2,9 @@ var searchButton = $("#search-btn");
 //var searchInput = $("#searchBar").val();
 //var resultsText = $("#results-list");
 var resultsList = $("#list-results");
+var resultCard = $(".result-card");
+var favoriteLabel = $('.label');
+var storageArr = [];
 
 var clearSearch = $("#clear")
 function clear(event) {
@@ -28,9 +31,7 @@ function getApi(event) {
       console.log(response.items);
       for (var i = 0; i < response.items.length; i++) {
         var bookCard = document.createElement('li');
-        bookCard.setAttribute('class', 'card cell small-2');
-
-
+        bookCard.setAttribute('class', 'card cell small-2 result-card');
 
         var linkBook = document.createElement('a');
         linkBook.href = response.items[i].volumeInfo.infoLink;
@@ -44,8 +45,10 @@ function getApi(event) {
         thumbImg.src = response.items[i].volumeInfo.imageLinks.thumbnail;
         linkBook.append(thumbImg);
 
-        // var favoriteEl = document.createElement('span');
-        // favoriteEl.textContent = ''
+        var favoriteEl = document.createElement('span');
+        favoriteEl.setAttribute('class', 'label warning');
+        favoriteEl.textContent = 'Favorite Me';
+        bookCard.append(favoriteEl);
 
         resultsList.append(bookCard);
 
@@ -62,25 +65,33 @@ function getApi(event) {
     });
 }
 searchButton.on('click', getApi);
- 
+
 
 var bestSellersList = $("best-seller-list-results")
 var requestUrlNyt = "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?&api-key=sRQWJNPgmG9zigAss0SflGl9oOG4nTnU"
 function getNytApi(requestUrlNyt) {
   fetch(requestUrlNyt)
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(response) {
-    console.log(response)
-    //response.results.books.forEach(title => console.log(title));
-    var title;
-    for (var i = 0; i < response.results.books.length; i++) {
-      //console.log(response.results.books[i].title)
-      title = response.results.books[i].title;
-      console.log(title)
-    }
-  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      console.log(response)
+      //response.results.books.forEach(title => console.log(title));
+      var title;
+      for (var i = 0; i < response.results.books.length; i++) {
+        //console.log(response.results.books[i].title)
+        title = response.results.books[i].title;
+        console.log(title)
+      }
+    })
 }
 
 getNytApi(requestUrlNyt);
+
+resultsList.on('click', '.label', function () {
+  console.log($(this).parent());
+  // storageArr = storageArr.concat($(this).parent());
+  // console.log(storageArr);
+  // localStorage.setItem('book', $(this).parent());
+  console.log('click');
+})
