@@ -175,6 +175,11 @@ button[data-toggle="offCanvas"] {
     width: 50%;
 }
 
+.label:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+
 li {
     font-size: 15px;
     font-weight: bold;
