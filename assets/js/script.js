@@ -36,7 +36,7 @@ function getFavorites() {
 
         var favoriteEl = document.createElement('span');
         favoriteEl.setAttribute('class', 'label warning');
-        favoriteEl.textContent = 'Favorite Me';
+        favoriteEl.textContent = 'Remove';
         bookCard.append(favoriteEl);
 
         var isbnNumber = document.createElement('span');
@@ -175,7 +175,7 @@ function saveBook() {
 
       var favoriteEl = document.createElement('span');
       favoriteEl.setAttribute('class', 'label warning');
-      favoriteEl.textContent = 'Favorite Me';
+      favoriteEl.textContent = 'Remove';
       bookCard.append(favoriteEl);
 
       var isbnNumber = document.createElement('span');
