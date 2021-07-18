@@ -4,7 +4,22 @@ var searchButton = $("#search-btn");
 var resultsList = $("#list-results");
 var resultCard = $(".result-card");
 var favoriteLabel = $('.label');
+var favoriteMenu = $('.favorite-menu');
 var storageArr = [];
+
+function getFavorites() {
+  storageArr = storageArr.concat(JSON.parse(localStorage.getItem('book')));
+  console.log(storageArr);
+
+  var testItem = $('<li>');
+  testItem.text('THIS IS A TEST');
+  favoriteMenu.append(testItem);
+
+  // for (var i = 0; i < storageArr.length; i++) {
+  //   favoriteMenu.append(storageArr[i]);
+  // }
+}
+getFavorites();
 
 var clearSearch = $("#clear")
 function clear(event) {
@@ -50,6 +65,13 @@ function getApi(event) {
         favoriteEl.textContent = 'Favorite Me';
         bookCard.append(favoriteEl);
 
+        var isbnNumber = document.createElement('span');
+        isbnNumber.textContent = response.items[i].volumeInfo.industryIdentifiers[0].identifier;
+        console.log(response.items[i].volumeInfo.industryIdentifiers[0].identifier);
+        console.log(isbnNumber.textContent);
+        isbnNumber.setAttribute('style', 'display: none');
+        bookCard.append(isbnNumber);
+
         resultsList.append(bookCard);
 
         console.log(response.items[i].volumeInfo.infoLink);
@@ -88,10 +110,14 @@ function getNytApi(requestUrlNyt) {
 
 getNytApi(requestUrlNyt);
 
-resultsList.on('click', '.label', function () {
+function saveBook() {
+
   console.log($(this).parent());
-  // storageArr = storageArr.concat($(this).parent());
-  // console.log(storageArr);
-  // localStorage.setItem('book', $(this).parent());
+  storageArr = storageArr.concat($(this).parent());
+  console.log(storageArr);
+  localStorage.setItem('book', JSON.stringify(storageArr));
+  console.log(localStorage.getItem('book'));
   console.log('click');
-})
+}
+
+resultsList.on('click', '.label', saveBook);
