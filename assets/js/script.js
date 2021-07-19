@@ -79,7 +79,8 @@ function getApi(event) {
       console.log(response);
       //console.log(response.kind);
       //console.log(response.totalItems);
-      console.log(response.items);
+      console.log(response);
+      //console.log(response.items.volumeInfo.authors);
       for (var i = 0; i < response.items.length; i++) {
         var bookCard = document.createElement('li');
         bookCard.setAttribute('class', 'card cell small-2 result-card');
@@ -90,7 +91,7 @@ function getApi(event) {
         bookCard.append(linkBook);
 
         //console.log(response.items[i].volumeInfo);
-        console.log(response.items[i].volumeInfo.imageLinks.thumbnail);
+        //console.log(response.items[i].volumeInfo.imageLinks.thumbnail);
         var thumbImg = document.createElement('img');
         thumbImg.setAttribute('alt', `${response.items[i].volumeInfo.title}`)
         thumbImg.src = response.items[i].volumeInfo.imageLinks.thumbnail;
@@ -123,29 +124,59 @@ function getApi(event) {
       }
     });
 }
-searchButton.on('click', getApi);
+searchButton.on('click', getApi); 
 
 
-var bestSellersList = $("best-seller-list-results")
-var requestUrlNyt = "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?&api-key=sRQWJNPgmG9zigAss0SflGl9oOG4nTnU"
-function getNytApi(requestUrlNyt) {
+var bestSellersList = $("#best-seller-list-results");
+var submitBtn = $("#submit");
+
+function getNytApi(event) {
+  event.preventDefault()
+
+var listType = document.getElementById('list-type');
+var listValue = listType.options[listType.selectedIndex].value;
+
+  listType.addEventListener("change", (e) => {
+    const value = e.target.value;
+    const text = listType.options[listType.selectedIndex].value;
+   
+    if (value) {
+      //document.getElementById("pick").textContent = `Value Selected: ${value}`;
+      listValue = listType.options[listType.selectedIndex].value;
+      console.log(listValue)
+    } else {
+      document.getElementById("pick").textContent = "";
+    }
+  });
+
+  var requestUrlNyt = "https://api.nytimes.com/svc/books/v3/lists/current/" + listValue + ".json?&api-key=sRQWJNPgmG9zigAss0SflGl9oOG4nTnU";
+    console.log(requestUrlNyt);
+  
   fetch(requestUrlNyt)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
-      console.log(response)
-      //response.results.books.forEach(title => console.log(title));
-      var title;
-      for (var i = 0; i < response.results.books.length; i++) {
-        //console.log(response.results.books[i].title)
-        title = response.results.books[i].title;
-        console.log(title)
-      }
-    })
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(response) {
+    console.log(requestUrlNyt)
+    
+    for (var i = 0; i < response.results.books.length; i++) {
+      //console.log(response.results.books[i].title)
+      var title = document.createElement('li');
+      title.textContent = response.results.books[i].title;
+      //console.log(title)
+      //console.log(response.results.books[i].primary_isbn13)
+      bestSellersList.append(title)
+      var nytReviewLink = response.results.books[i].amazon_product_url;
+      //console.log(nytReviewLink)
+      var linkNytBook = document.createElement('a');
+      linkNytBook.textContent = "  Buy this book now!"
+      linkNytBook.href = response.results.books[i].amazon_product_url;
+      title.append(linkNytBook)
+      
+    }
+  })
 }
-
-getNytApi(requestUrlNyt);
+submitBtn.on('click', getNytApi)
 
 // || Saving book to favorites section
 function saveBook() {
