@@ -69,10 +69,23 @@
                             <h2>Results</h2>
                             <ul id="list-results" class="grid-x"></ul>
                         </section>
+                        
                         <section id="bestseller" class="bestseller">
                             <h2>Best Seller</h2>
-                            <div class="best-seller-list-results">
-                            </div>
+                            <label for="BSlists">Choose a List:</label>
+                            <select id="list-type" name="list-type">
+                                <option value="hardcover-fiction">Fiction</option>
+                                <option value="hardcover-nonfiction">Non-Fiction</option>
+                                <option value="trade-fiction-paperback">Paperback Trade Fiction</option>
+                                <option value="paperback-nonfiction">Paperback Nonfiction</option>
+                                <option value="combined-print-and-e-book-fiction">E-book Fiction</option>
+                                <option value="combined-print-and-e-book-nonfiction">Combined Print & E-book Nonfiction</option>
+                        </select>
+
+                        <input id="submit" type="submit">
+
+                            <ol id="best-seller-list-results">
+                            </ol>
                         </section>
                     </div>
 
