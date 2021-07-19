@@ -3,10 +3,13 @@
 header {
     background: #30C5BE;
 }
-
+/* H1 booksearch styles */
+@import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap');
 h1 {
     color: #F5C8A3;
     padding-left: 30px;
+    text-shadow: 0 0 5px yellow,
+                 0 0 10px yellow;
 }
 
 nav a{
@@ -40,7 +43,7 @@ button[data-toggle="offCanvas"] {
 }
 
 #favorites {
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
     height: 100vh;
 }
 
@@ -110,7 +113,7 @@ button[data-toggle="offCanvas"] {
     border: 1px solid var(--gray-color-light);
 }
 
-.search_books button {
+.search-btn {
     padding: 10px 20px;
     color: var(--base-color);
     background-color: var(--button-primary-color);
@@ -119,8 +122,25 @@ button[data-toggle="offCanvas"] {
     cursor: pointer;
 }
 
-.search_books button:hover {
+.search-btn:hover {
     background-color: var(--button-secondary-color);
+}
+
+.clear {
+    padding: 10px 20px;
+    color: var(--base-color);
+    background-color: var(--button-primary-color);
+    border: 2px solid var(--button-secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clear:hover {
+    background-color: var(--button-secondary-color);
+}
+
+#wrapper {
+    display: inline;
 }
 
 /* Results stylings */
@@ -142,6 +162,7 @@ button[data-toggle="offCanvas"] {
     width: 200px;
     height: 300px;
     padding: 15px;
+    position: relative;
 }
 
 #list-results img {
@@ -149,37 +170,21 @@ button[data-toggle="offCanvas"] {
     width: 105%;
 }
 
+.label {
+    position: absolute;
+    width: 50%;
+}
+
+.label:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+
 li {
     font-size: 15px;
     font-weight: bold;
     padding: 20px;
 }
-
-#favorites {
-    border-left: 1px solid black;
-    height: 100vh;
-}
-
-#favorites h2 {
-    font-size: 30px;
-    padding: 10px;
-}
-
-#list-results {
-    display: flex;
-    flex-direction: row;
-}
-
-/* Footer */
-footer {
-    /* margin-top: 10px; */
-    padding: 30px 0;
-    background-color: rgb(228, 228, 228);
-    height: 100px;
-    display: flex;
-    justify-content: center;
-}
-
 /* Media queries styles */
 @media only screen and (min-width: 768px) {
     header {
@@ -199,4 +204,62 @@ footer {
             width: 90%;
         }
     }
+}
+
+/* favorite section html */
+
+.fav_books {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fav_books {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.fav_books div {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.goback-btn {
+    padding: 10px 20px;
+    color: var(--base-color);
+    background-color: var(--button-primary-color);
+    border: 2px solid var(--button-secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.goback-btn:hover {
+    background-color: var(--button-secondary-color);
+}
+
+.clear {
+    padding: 10px 20px;
+    color: var(--base-color);
+    background-color: var(--button-primary-color);
+    border: 2px solid var(--button-secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clear:hover {
+    background-color: var(--button-secondary-color);
+}
+
+#wrapper {
+    display: inline;
 }
