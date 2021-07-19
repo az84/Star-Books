@@ -2,6 +2,7 @@ var searchButton = $("#search-btn");
 //var searchInput = $("#searchBar").val();
 //var resultsText = $("#results-list");
 var resultsList = $("#list-results");
+var reviewList = $(".list-reviews");
 
 var clearSearch = $("#clear")
 function clear(event) {
@@ -25,7 +26,8 @@ function getApi(event) {
       console.log(response);
       //console.log(response.kind);
       //console.log(response.totalItems);
-      console.log(response.items);
+      console.log(response);
+      //console.log(response.items.volumeInfo.authors);
       for (var i = 0; i < response.items.length; i++) {
         var bookCard = document.createElement('li');
         bookCard.setAttribute('class', 'card cell small-2');
@@ -38,7 +40,7 @@ function getApi(event) {
         bookCard.append(linkBook);
 
         //console.log(response.items[i].volumeInfo);
-        console.log(response.items[i].volumeInfo.imageLinks.thumbnail);
+        //console.log(response.items[i].volumeInfo.imageLinks.thumbnail);
         var thumbImg = document.createElement('img');
         thumbImg.setAttribute('alt', `${response.items[i].volumeInfo.title}`)
         thumbImg.src = response.items[i].volumeInfo.imageLinks.thumbnail;
@@ -49,8 +51,20 @@ function getApi(event) {
 
         resultsList.append(bookCard);
 
-        console.log(response.items[i].volumeInfo.infoLink);
-        //console.log(response.items[i].volumeInfo.industryIdentifiers)
+        //console.log(response.items[i].volumeInfo.infoLink);
+        console.log(response.items[i].volumeInfo.industryIdentifiers)
+        console.log(response.items[i].volumeInfo.industryIdentifiers)
+        var isbnNumber;
+        for (var i = 0; i < response.items.length; i++) {
+        //console.log(response.items[i].volumeInfo.industryIdentifiers[1].identifier)
+        isbnNumber = response.items[i].volumeInfo.industryIdentifiers[1].identifier;
+        console.log(isbnNumber);
+        var authorName = document.createElement('h2');
+        //console.log(response.items[i].volumeInfo.authors[0])
+        authorName = response.items[i].volumeInfo.authors[0];
+        authorName.textContent = response.items[i].volumeInfo.authors[0];
+        //bookCard.append(authorName);
+        } 
       }
       if (searchInput != "") {
         console.log(searchInput);
@@ -61,7 +75,11 @@ function getApi(event) {
       }
     });
 }
-searchButton.on('click', getApi);
+searchButton.on('click', getApi); 
+
+
+
+
 
 var bestSellersList = $("#best-seller-list-results");
 var submitBtn = $("#submit");
