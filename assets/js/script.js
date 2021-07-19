@@ -7,6 +7,7 @@ var favoriteLabel = $('.label');
 var favoriteMenu = $('.favorite-menu');
 var storageArr = [];
 
+// || Displaying favorites from local storage
 function getFavorites() {
   if (localStorage.getItem('book') === null) {
 
@@ -62,6 +63,7 @@ function clear(event) {
 }
 clearSearch.on('click', clear);
 
+// || Retrieving results from search and displaying on screen
 function getApi(event) {
   event.preventDefault()
   var searchInput = $("#search-bar").val();
@@ -145,8 +147,9 @@ function getNytApi(requestUrlNyt) {
 
 getNytApi(requestUrlNyt);
 
+// || Saving book to favorites section
 function saveBook() {
-
+  // || Finding unique International Standard Book Number(isbn) tied to book and adding to local storage
   var isbnRetrieval = $(this).siblings().eq(2).prevObject[1].innerHTML;
   console.log(isbnRetrieval);
   storageArr = storageArr.concat(isbnRetrieval);
@@ -192,3 +195,17 @@ function saveBook() {
 }
 
 resultsList.on('click', '.label', saveBook);
+
+// || Removing item from favorites section
+function removeBook() {
+  $(this).parent().attr('style', 'display: none');
+  var isbnRetrieval = $(this).siblings().eq(2).prevObject[1].innerHTML;
+  for (var i = 0; i < storageArr.length; i++) {
+    if (isbnRetrieval === storageArr[i]) {
+      var indexRemoval = storageArr.indexOf(isbnRetrieval);
+      storageArr.splice(indexRemoval, 1);
+      localStorage.setItem('book', JSON.stringify(storageArr));
+    }
+  }
+}
+favoriteMenu.on('click', '.label', removeBook);
