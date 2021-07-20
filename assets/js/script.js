@@ -1,3 +1,4 @@
+/** */
 var searchButton = $("#search-btn");
 var searchInput = $("#search-bar");
 //var resultsText = $("#results-list");
@@ -151,7 +152,7 @@ function getNytApi(event) {
       listValue = listType.options[listType.selectedIndex].value;
       console.log(listValue)
     } else {
-      //document.getElementById("pick").textContent = "";
+      document.getElementById("pick").textContent = "";
     }
   });
 
@@ -250,7 +251,6 @@ function saveBook() {
 }
 
 resultsList.on('click', '.label', saveBook);
-bestSellersList.on('click', '.label', saveBook);
 
 // || Removing item from favorites section
 function removeBook() {
