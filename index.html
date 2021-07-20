@@ -51,44 +51,45 @@
                     <div class="cell small-12">
                         <section id="search_books" class="search_books">
                             <div id="search-bar-items">
-                            <p>Search for a topic below and see what books are available!</p>
-                            <div>
-                                <input id="search-bar" type="text">
+                                <p>Search for a topic below and see what books are available!</p>
+                                <div>
+                                    <input id="search-bar" type="text">
+                                </div>
+                                <div id="wrapper">
+                                    <button id="search-btn" type="button" class="search-btn">Search</button>
+                                    <button id="clear" value="reset" class="clear">Clear Search</button>
+                                </div>
                             </div>
-                            <div id="wrapper">
-                                <button id="search-btn" type="button" class="search-btn">Search</button>
-                                <button id="clear" value="reset" class="clear">Clear Search</button>
+                            <div id="previous-searches">
+                                <h2>My Previous Searches</h2>
+                                <ul id="previous-searches-list-results">
+                                </ul>
                             </div>
-                        </div>
-                        <div id="previous-searches">
-                            <h2>My Previous Searches</h2>
-                        <ul id="previous-searches-list-results">
-                        </ul>
-                        </div>
                         </section>
 
-                    <section id="results-section" class="results-section">
-                        <!-- <h2>Results</h2> -->
-                        <ul id="list-results"></ul>
-                    </section>
-                    <section id="bestseller" class="bestseller">
-                        <h2>Best Seller</h2>
-                        <label for="BSlists">Choose a List:</label>
-                        <select id="list-type" name="list-type">
-                            <option value="hardcover-fiction">Fiction</option>
-                            <option value="hardcover-nonfiction">Non-Fiction</option>
-                            <option value="trade-fiction-paperback">Paperback Trade Fiction</option>
-                            <option value="paperback-nonfiction">Paperback Nonfiction</option>
-                            <option value="combined-print-and-e-book-fiction">E-book Fiction</option>
-                            <option value="combined-print-and-e-book-nonfiction">Combined Print & E-book Nonfiction</option>
-                    </select>
+                        <section id="results-section" class="results-section">
+                            <!-- <h2>Results</h2> -->
+                            <ul id="list-results" class="grid-x"></ul>
+                        </section>
+                        <section id="bestseller" class="bestseller">
+                            <h2>Best Seller</h2>
+                            <label for="BSlists">Choose a List:</label>
+                            <select id="list-type" name="list-type">
+                                <option value="hardcover-fiction">Fiction</option>
+                                <option value="hardcover-nonfiction">Non-Fiction</option>
+                                <option value="trade-fiction-paperback">Paperback Trade Fiction</option>
+                                <option value="paperback-nonfiction">Paperback Nonfiction</option>
+                                <option value="combined-print-and-e-book-fiction">E-book Fiction</option>
+                                <option value="combined-print-and-e-book-nonfiction">Combined Print & E-book Nonfiction
+                                </option>
+                            </select>
 
-                    <input id="submit" type="submit">
+                            <input id="submit" type="submit">
 
-                        <ol id="best-seller-list-results">
-                        </ol>
-                    </section>
-                </div>
+                            <ol id="best-seller-list-results">
+                            </ol>
+                        </section>
+                    </div>
 
                 </div>
             </div>
