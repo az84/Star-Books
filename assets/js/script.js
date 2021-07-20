@@ -125,10 +125,10 @@ function getApi(event) {
       }
     });
 }
-searchButton.on('click', getApi); 
+searchButton.on('click', getApi);
 
-searchInput.on('keyup', function(e) {
-  if(e.keyCode === 13) {
+searchInput.on('keyup', function (e) {
+  if (e.keyCode === 13) {
     getApi(e)
   }
 })
@@ -139,14 +139,14 @@ var submitBtn = $("#submit");
 function getNytApi(event) {
   event.preventDefault()
 
-bestSellersList.empty();
-var listType = document.getElementById('list-type');
-var listValue = listType.options[listType.selectedIndex].value;
+  bestSellersList.empty();
+  var listType = document.getElementById('list-type');
+  var listValue = listType.options[listType.selectedIndex].value;
 
   listType.addEventListener("change", (e) => {
     const value = e.target.value;
     const text = listType.options[listType.selectedIndex].value;
-   
+
     if (value) {
       //document.getElementById("pick").textContent = `Value Selected: ${value}`;
       listValue = listType.options[listType.selectedIndex].value;
@@ -157,31 +157,49 @@ var listValue = listType.options[listType.selectedIndex].value;
   });
 
   var requestUrlNyt = "https://api.nytimes.com/svc/books/v3/lists/current/" + listValue + ".json?&api-key=sRQWJNPgmG9zigAss0SflGl9oOG4nTnU";
-    console.log(requestUrlNyt);
-  
+  console.log(requestUrlNyt);
+
   fetch(requestUrlNyt)
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(response) {
-    console.log(requestUrlNyt)
-    
-    for (var i = 0; i < response.results.books.length; i++) {
-      //console.log(response.results.books[i].title)
-      var title = document.createElement('li');
-      title.textContent = response.results.books[i].title;
-      //console.log(title)
-      console.log(response.results.books[i].book_image)
-      bestSellersList.append(title)
-      var nytReviewLink = response.results.books[i].amazon_product_url;
-      //console.log(nytReviewLink)
-      var linkNytBook = document.createElement('a');
-      linkNytBook.textContent = "  Buy this book now!"
-      linkNytBook.href = response.results.books[i].amazon_product_url;
-      title.append(linkNytBook)
-      
-    }
-  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      console.log(requestUrlNyt)
+
+      for (var i = 0; i < response.results.books.length; i++) {
+        //console.log(response.results.books[i].title)
+        var bookCard = document.createElement('li');
+        bookCard.setAttribute('class', 'card cell small-2 result-card');
+
+        var linkBook = document.createElement('a');
+        linkBook.href = response.results.books[i].amazon_product_url;
+        linkBook.setAttribute('target', '_blank');
+        bookCard.append(linkBook);
+
+        var thumbImg = document.createElement('img');
+        thumbImg.setAttribute('alt', `${response.results.books[i].title}`)
+        thumbImg.src = response.results.books[i].book_image;
+        linkBook.append(thumbImg);
+
+        var favoriteEl = document.createElement('span');
+        favoriteEl.setAttribute('class', 'label warning');
+        favoriteEl.textContent = 'Favorite Me';
+        bookCard.append(favoriteEl);
+
+        var isbnNumber = document.createElement('span');
+        isbnNumber.textContent = response.results.books[i].primary_isbn13;
+        console.log(response.results.books[i].primary_isbn13);
+        console.log(isbnNumber.textContent);
+        isbnNumber.setAttribute('style', 'display: none');
+        bookCard.append(isbnNumber);
+
+        bestSellersList.append(bookCard);
+
+        console.log(response.results.books[i].amazon_product_url);
+        console.log(resultCard);
+
+      }
+    })
 }
 submitBtn.on('click', getNytApi)
 
