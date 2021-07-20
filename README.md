@@ -76,7 +76,7 @@ https://get.foundation/sites/docs/
 
 ***
 
-# User Stories:
+## User Stories:
 
 - As a User, I want a book site that brings me a wide variety of books to choose from. 
 

@@ -1,10 +1,25 @@
+:root {
+    --base-color: rgb(238, 238, 238);
+    --base-color-primary: #fff;
+    --primary-color: rgb(92, 64, 168);
+    --secondar-color:orange;
+    --gray-color-light: rgb(202, 202, 202);
+    --gray-color-dark: #000000;
+    --button-primary-color: rgb(56, 151, 163);
+    --button-secondary-color: grey;
+}
 
 
 header {
     background: #30C5BE;
+    display: flex-end;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 19px -5px var(--gray-color-dark);
+    font-family: cursive;
 }
 /* H1 booksearch styles */
-@import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap');
+
 h1 {
     color: #F5C8A3;
     padding-left: 30px;
@@ -19,20 +34,16 @@ nav a{
     font-weight: bold;
 }
 
-:root {
-    --base-color: rgb(238, 238, 238);
-    --base-color-primary: #fff;
-    --primary-color: rgb(92, 64, 168);
-    --secondar-color:orange;
-    --gray-color-light: rgb(202, 202, 202);
-    --gray-color-dark: #000000;
-    --button-primary-color: rgb(56, 151, 163);
-    --button-secondary-color: grey;
-}
 
 /* Off-canvas button toggle */
 button[data-toggle="offCanvas"] {
     float: right;
+    border-radius: 10px;
+    background-color: #30c5be69;
+    font-size: 18px;;
+    transition: .25s;
+    font-weight: bold;
+    margin: 1px 1px 1rem 1;
 }
 
 .off-canvas {
@@ -71,8 +82,12 @@ button[data-toggle="offCanvas"] {
     flex-direction: column;
     margin: 20px auto;
     width: 60%;
+    font-family: cursive;
 }
 
+h2 {
+    font-family: cursive;
+}
 /* search */
 .search_books {
     margin-top: 20px;
@@ -103,6 +118,7 @@ button[data-toggle="offCanvas"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: cursive;
 }
 
 .search_books input {
@@ -181,9 +197,11 @@ button[data-toggle="offCanvas"] {
     width: 50%;
 }
 
+
 .label:hover {
     background-color: yellow;
     cursor: pointer;
+    
 }
 
 li {
