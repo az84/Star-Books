@@ -146,7 +146,7 @@ var listValue = listType.options[listType.selectedIndex].value;
       listValue = listType.options[listType.selectedIndex].value;
       console.log(listValue)
     } else {
-      document.getElementById("pick").textContent = "";
+      //document.getElementById("pick").textContent = "";
     }
   });
 
@@ -162,17 +162,35 @@ var listValue = listType.options[listType.selectedIndex].value;
     
     for (var i = 0; i < response.results.books.length; i++) {
       //console.log(response.results.books[i].title)
-      var title = document.createElement('li');
-      title.textContent = response.results.books[i].title;
-      //console.log(title)
-      console.log(response.results.books[i].book_image)
-      bestSellersList.append(title)
-      var nytReviewLink = response.results.books[i].amazon_product_url;
-      //console.log(nytReviewLink)
-      var linkNytBook = document.createElement('a');
-      linkNytBook.textContent = "  Buy this book now!"
-      linkNytBook.href = response.results.books[i].amazon_product_url;
-      title.append(linkNytBook)
+      var bookCard = document.createElement('li');
+      bookCard.setAttribute('class', 'card cell small-2 result-card');
+      
+      var linkBook = document.createElement('a');
+      linkBook.href = response.results.books[i].amazon_product_url;
+      linkBook.setAttribute('target', '_blank');
+      bookCard.append(linkBook);
+
+      var thumbImg = document.createElement('img');
+        thumbImg.setAttribute('alt', `${response.results.books[i].title}`)
+        thumbImg.src = response.results.books[i].book_image;
+        linkBook.append(thumbImg);
+
+        var favoriteEl = document.createElement('span');
+        favoriteEl.setAttribute('class', 'label warning');
+        favoriteEl.textContent = 'Favorite Me';
+        bookCard.append(favoriteEl);
+
+        var isbnNumber = document.createElement('span');
+        isbnNumber.textContent = response.results.books[i].primary_isbn13;
+        console.log(response.results.books[i].primary_isbn13);
+        console.log(isbnNumber.textContent);
+        isbnNumber.setAttribute('style', 'display: none');
+        bookCard.append(isbnNumber);
+
+        bestSellersList.append(bookCard);
+
+        console.log(response.results.books[i].amazon_product_url);
+        console.log(resultCard);
       
     }
   })
@@ -227,6 +245,7 @@ function saveBook() {
 }
 
 resultsList.on('click', '.label', saveBook);
+bestSellersList.on('click', '.label', saveBook);
 
 // || Removing item from favorites section
 function removeBook() {
