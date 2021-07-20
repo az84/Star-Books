@@ -1,11 +1,10 @@
 # Book Search
 
-* [TeamMembers](#Team Members)
-* [Introduction] (#Introduction)
+* [Introduction](#Introduction)
 * [Summary](#Summary)
 * [Demo](#Demo)
 * [Functionality](#Functionality)
-* [UserStories] (#User Stories)
+* [User Stories](#UserStories)
 
 ## Team Members:
 - Andrew Ungvary
