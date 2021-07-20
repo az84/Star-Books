@@ -1,5 +1,5 @@
 var searchButton = $("#search-btn");
-//var searchInput = $("#searchBar").val();
+var searchInput = $("#search-bar");
 //var resultsText = $("#results-list");
 var resultsList = $("#list-results");
 var resultCard = $(".result-card");
@@ -126,6 +126,11 @@ function getApi(event) {
 }
 searchButton.on('click', getApi); 
 
+searchInput.on('keyup', function(e) {
+  if(e.keyCode === 13) {
+    getApi(e)
+  }
+})
 
 var bestSellersList = $("#best-seller-list-results");
 var submitBtn = $("#submit");
