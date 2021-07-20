@@ -79,7 +79,13 @@ button[data-toggle="offCanvas"] {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+#previous-searches {
+    width: 50%;
+    position: relative;
+    float: right;
 }
 
 .search_books {
