@@ -79,7 +79,13 @@ button[data-toggle="offCanvas"] {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+#previous-searches {
+    width: 50%;
+    position: relative;
+    float: right;
 }
 
 .search_books {
@@ -262,4 +268,26 @@ li {
 
 #wrapper {
     display: inline;
+}
+
+#best-seller-list-results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#best-seller-list-results .card {
+    background-color: #30c5be69;
+    border-radius: 10px;
+    margin: 20px;
+    width: 200px;
+    height: 300px;
+    padding: 15px;
+    position: relative;
+}
+
+#best-seller-list-results img {
+    height: 270px;
+    width: 105%;
 }
