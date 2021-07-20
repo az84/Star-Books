@@ -133,6 +133,7 @@ var submitBtn = $("#submit");
 function getNytApi(event) {
   event.preventDefault()
 
+bestSellersList.empty();
 var listType = document.getElementById('list-type');
 var listValue = listType.options[listType.selectedIndex].value;
 
@@ -164,7 +165,7 @@ var listValue = listType.options[listType.selectedIndex].value;
       var title = document.createElement('li');
       title.textContent = response.results.books[i].title;
       //console.log(title)
-      //console.log(response.results.books[i].primary_isbn13)
+      console.log(response.results.books[i].book_image)
       bestSellersList.append(title)
       var nytReviewLink = response.results.books[i].amazon_product_url;
       //console.log(nytReviewLink)
