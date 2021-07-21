@@ -322,3 +322,9 @@ label {
     height: 270px;
     width: 105%;
 }
+
+#previous-searches {
+    border-style: outset;
+    border-color: #30C5BE;
+    margin-left: 30px;
+}
