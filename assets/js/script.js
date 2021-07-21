@@ -3,10 +3,26 @@ var searchButton = $("#search-btn");
 var searchInput = $("#search-bar");
 //var resultsText = $("#results-list");
 var resultsList = $("#list-results");
+var PrevSearchList = $("#previous-searches-list-results");
 var resultCard = $(".result-card");
 var favoriteLabel = $('.label');
 var favoriteMenu = $('.favorite-menu');
 var storageArr = [];
+
+// For loop to persist HTML data 
+for (var i = 0; i < localStorage.length; i++) {
+
+  var prevSearch = localStorage.getItem(i);
+  var prevSearchItem = $("#previous-searches-list-results").addClass("list-group-item");
+
+  console.log(localStorage.getItem(i));
+
+  prevSearchItem.append("<li>" + prevSearch + "</li>");
+}
+
+// Key count for local storage
+var keyCount = 0;
+
 
 // || Displaying favorites from local storage
 function getFavorites() {
@@ -57,12 +73,20 @@ function getFavorites() {
 getFavorites();
 
 // || Clear search results
-var clearSearch = $("#clear")
+var clearSearch = $("#clear") 
 function clear(event) {
   event.preventDefault()
   resultsList.empty();
 }
 clearSearch.on('click', clear);
+
+// || Clear previous search list
+var clearPrevSearch = $("#clearPrev")
+function clear2(event) {
+  event.preventDefault()
+  PrevSearchList.empty();
+}
+clearPrevSearch.on('click', clear2);
 
 // || Retrieving results from search and displaying on screen
 function getApi(event) {
@@ -75,7 +99,10 @@ function getApi(event) {
       return response.json();
     })
     .then(function (response) {
+      var prevSearch = $("#previous-searches-list-results").addClass("list-group-item");
+      prevSearch.append("<li>" + searchInput + "</li>");
       console.log(searchInput);
+      console.log(prevSearch);
       //console.log(requestUrl)
       console.log(response);
       //console.log(response.kind);
@@ -124,6 +151,7 @@ function getApi(event) {
         })
       }
     });
+    
 }
 searchButton.on('click', getApi);
 
@@ -265,3 +293,7 @@ function removeBook() {
   }
 }
 favoriteMenu.on('click', '.label', removeBook);
+
+
+
+
