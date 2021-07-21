@@ -16,7 +16,7 @@ body {
 
 header {
     background: var(--header-color);
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 19px -5px var(--gray-color-dark);
     /* font-family: cursive; */
@@ -93,25 +93,18 @@ h2 {
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 #previous-searches {
     width: 50%;
-    position: relative;
-    float: right;
     background-image: url('../images/crumpled-white-paper-background_88281-3998.jpg');
 }
 
 #previous-searches button {
     margin-bottom: 10px;
-}
-
-.search_books {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
 }
 
 p {
@@ -123,8 +116,6 @@ p {
     flex-direction: column;
     box-sizing: border-box;
     margin: 10px 0;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* font-family: cursive; */
@@ -168,6 +159,17 @@ p {
 
 .clear:hover {
     background-color: var(--button-secondary-color);
+}
+
+/* Previous searches stylings */
+#previous-searches {
+    border-style: outset;
+    border-color: #30C5BE;
+    margin-left: 30px;
+}
+
+#previous-searches h4{
+    font-family: cursive;
 }
 
 #wrapper {
@@ -303,44 +305,30 @@ label {
     width: 105%;
 }
 
-#previous-searches {
-    border-style: outset;
-    border-color: #30C5BE;
-    margin-left: 30px;
-}
-
-#previous-searches h4{
-    font-family: cursive;
-}
 
 /* Media queries styles */
-@media only screen and (min-width: 768px) {
-    header {
-        padding: 20px;
-    }
-    .about-us {
-        width: 60%;
-    }
-    .search-books input {
-        width: 450px;
-    }
-    .search-books textarea {
-        width: 450px;
-    }
-    @media only screen and (max-width: 1024px) {
-        .bestseller {
-            width: 90%;
-        }
-    }
-}
-
 @media only screen and (max-width: 640px) {
+    header {
+        padding: 10px;
+    }
     h1 {
-        font-size: 40px;
+        font-size: 48px;
     }
     .nav-links {
         display: flex;
         justify-content: flex-end;
+    }
+    #search_books {
+        flex-direction: column;
+        align-items: center;
+    }
+    #previous-searches {
+        order: 1;
+        margin-left: 0px;
+        width: 100%;
+    }
+    #search-bar-items {
+        order: 2;
     }
 }
 
