@@ -1,8 +1,8 @@
 :root {
+    --header-color: #30C5BE;
+    --headings-color: #F5C8A3;
     --base-color: rgb(238, 238, 238);
     --base-color-primary: #fff;
-    --primary-color: rgb(92, 64, 168);
-    --secondar-color:orange;
     --gray-color-light: rgb(202, 202, 202);
     --gray-color-dark: #000000;
     --button-primary-color: rgb(56, 151, 163);
@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    background: #30C5BE;
+    background: var(--header-color);
     display: flex-end;
     padding: 10px;
     border-radius: 5px;
@@ -25,14 +25,14 @@ header {
 /* H1 booksearch styles */
 
 h1 {
-    color: #F5C8A3;
+    color: var(--headings-color);
     padding-left: 30px;
     text-shadow: 0 0 5px yellow,
                  0 0 10px yellow;
 }
 
 nav a{
-    color: white;
+    color: var(--base-color);
     font-size: 18px;;
     transition: .25s;
     font-weight: bold;
@@ -241,6 +241,12 @@ li {
         .bestseller {
             width: 90%;
         }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    h1 {
+        font-size: 40px;;
     }
 }
 
