@@ -328,3 +328,7 @@ label {
     border-color: #30C5BE;
     margin-left: 30px;
 }
+
+#previous-searches h4{
+    font-family: cursive;
+}
