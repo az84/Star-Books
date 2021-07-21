@@ -91,6 +91,7 @@ button[data-toggle="offCanvas"] {
 
 h2 {
     font-family: cursive;
+    font-size: 32px;
 } 
 /* search */
 .search_books {
@@ -111,6 +112,10 @@ h2 {
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
+}
+
+p {
+    font-size: 20px;
 }
 
 .search_books div {
