@@ -301,7 +301,7 @@ li {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #best-seller-list-results .card {
