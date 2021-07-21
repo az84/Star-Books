@@ -279,6 +279,7 @@ function saveBook() {
 }
 
 resultsList.on('click', '.label', saveBook);
+bestSellersList.on('click', '.label', saveBook);
 
 // || Removing item from favorites section
 function removeBook() {
