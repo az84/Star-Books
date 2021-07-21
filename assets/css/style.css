@@ -1,8 +1,8 @@
 :root {
+    --header-color: #30C5BE;
+    --headings-color: #F5C8A3;
     --base-color: rgb(238, 238, 238);
     --base-color-primary: #fff;
-    --primary-color: rgb(92, 64, 168);
-    --secondar-color:orange;
     --gray-color-light: rgb(202, 202, 202);
     --gray-color-dark: #000000;
     --button-primary-color: rgb(56, 151, 163);
@@ -15,9 +15,8 @@ body {
 }
 
 header {
-    background: #30C5BE;
-    display: flex-end;
-    padding: 10px;
+    background: var(--header-color);
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 19px -5px var(--gray-color-dark);
     /* font-family: cursive; */
@@ -25,22 +24,22 @@ header {
 /* H1 booksearch styles */
 
 h1 {
-    color: #F5C8A3;
+    color: var(--headings-color);
     padding-left: 30px;
     text-shadow: 0 0 5px yellow,
                  0 0 10px yellow;
 }
 
 nav a{
-    color: white;
-    font-size: 18px;;
+    color: var(--base-color);
+    font-size: 18px;
     transition: .25s;
     font-weight: bold;
 }
 
 
 /* Off-canvas button toggle */
-button[data-toggle="offCanvas"] {
+/* button[data-toggle="offCanvas"] {
     float: right;
     border-radius: 10px;
     background-color: #30c5be69;
@@ -48,17 +47,13 @@ button[data-toggle="offCanvas"] {
     transition: .25s;
     font-weight: bold;
     margin: 1px 1px 1rem 1;
-}
+} */
 
 .off-canvas {
-    /* background-color:rgba(56, 150, 163, 0.849); */
     background-color:rgb(56, 150, 163);
-
-    /* background-color: rgb(7, 30, 34); */
 }
 
 #favorites {
-    /* border-left: 1px solid black; */
     height: 100vh;
 }
 
@@ -98,25 +93,18 @@ h2 {
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 #previous-searches {
     width: 50%;
-    position: relative;
-    float: right;
     background-image: url('../images/crumpled-white-paper-background_88281-3998.jpg');
 }
 
 #previous-searches button {
     margin-bottom: 10px;
-}
-
-.search_books {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
 }
 
 p {
@@ -128,8 +116,6 @@ p {
     flex-direction: column;
     box-sizing: border-box;
     margin: 10px 0;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* font-family: cursive; */
@@ -173,6 +159,17 @@ p {
 
 .clear:hover {
     background-color: var(--button-secondary-color);
+}
+
+/* Previous searches stylings */
+#previous-searches {
+    border-style: outset;
+    border-color: #30C5BE;
+    margin-left: 30px;
+}
+
+#previous-searches h4{
+    font-family: cursive;
 }
 
 #wrapper {
@@ -222,26 +219,6 @@ li {
     font-size: 15px;
     font-weight: bold;
     padding: 20px;
-}
-/* Media queries styles */
-@media only screen and (min-width: 768px) {
-    header {
-        padding: 20px;
-    }
-    .about-us {
-        width: 60%;
-    }
-    .search-books input {
-        width: 450px;
-    }
-    .search-books textarea {
-        width: 450px;
-    }
-    @media only screen and (max-width: 1024px) {
-        .bestseller {
-            width: 90%;
-        }
-    }
 }
 
 /* favorite section html */
@@ -328,12 +305,30 @@ label {
     width: 105%;
 }
 
-#previous-searches {
-    border-style: outset;
-    border-color: #30C5BE;
-    margin-left: 30px;
+
+/* Media queries styles */
+@media only screen and (max-width: 640px) {
+    header {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 48px;
+    }
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
+    }
+    #search_books {
+        flex-direction: column;
+        align-items: center;
+    }
+    #previous-searches {
+        order: 1;
+        margin-left: 0px;
+        width: 100%;
+    }
+    #search-bar-items {
+        order: 2;
+    }
 }
 
-#previous-searches h4{
-    font-family: cursive;
-}
