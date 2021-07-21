@@ -246,7 +246,11 @@ li {
 
 @media only screen and (max-width: 640px) {
     h1 {
-        font-size: 40px;;
+        font-size: 40px;
+    }
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
     }
 }
 
