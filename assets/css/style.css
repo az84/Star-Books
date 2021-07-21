@@ -55,14 +55,8 @@ nav a{
     color: var(--header-color);
 }
 
-/* Results styles */
-.results-section {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: auto;
+label {
+    font-size: 20px;
 }
 
 h2 {
@@ -135,18 +129,14 @@ p {
     border-style: outset;
     border-color: #30C5BE;
     margin-left: 30px;
-    width: 50%;
-    background-image: url('../images/crumpled-white-paper-background_88281-3998.jpg');
+    width: 40%;
+    background-image: url('../images/crumpled-white-paper.png');
+    background-size: cover;
 }
 
 #previous-searches h4{
     font-family: cursive;
 }
-
-/* #previous-searches {
-    width: 50%;
-    background-image: url('../images/crumpled-white-paper-background_88281-3998.jpg');
-} */
 
 #previous-searches button {
     margin-bottom: 10px;
@@ -157,6 +147,15 @@ p {
 }
 
 /* Results stylings */
+.results-section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+
 #results-section li {
     list-style: none;
 }
@@ -230,15 +229,27 @@ li {
     position: relative;
 }
 
-label {
-    font-size: 20px;
-}
-
 #best-seller-list-results img {
     height: 270px;
     width: 105%;
 }
 
+.bestseller input {
+    padding: 10px 20px;
+    color: var(--base-color);
+    background-color: var(--button-primary-color);
+    border: 2px solid var(--button-secondary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    #previous-searches {
+        width: 50%;
+    }
+}
 
 /* Media queries styles */
 @media only screen and (max-width: 640px) {
