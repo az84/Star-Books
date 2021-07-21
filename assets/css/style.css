@@ -183,7 +183,7 @@ p {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #list-results .card {
@@ -312,6 +312,10 @@ li {
     height: 300px;
     padding: 15px;
     position: relative;
+}
+
+label {
+    font-size: 20px;
 }
 
 #best-seller-list-results img {
