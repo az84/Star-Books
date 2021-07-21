@@ -108,6 +108,10 @@ h2 {
     float: right;
 }
 
+#previous-searches button {
+    margin-bottom: 10px;
+}
+
 .search_books {
     width: 100%;
     box-sizing: border-box;
