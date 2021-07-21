@@ -42,7 +42,7 @@ function getFavorites() {
         .then(function (data) {
           console.log(data);
           var bookCard = document.createElement('li');
-          bookCard.setAttribute('class', 'card cell small-2 result-card');
+          bookCard.setAttribute('class', 'card cell medium-2 small-4 result-card');
 
           var linkBook = document.createElement('a');
           linkBook.href = data.items[0].volumeInfo.infoLink;
