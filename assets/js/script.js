@@ -73,7 +73,7 @@ function getFavorites() {
 getFavorites();
 
 // || Clear search results
-var clearSearch = $("#clear") 
+var clearSearch = $("#clear")
 function clear(event) {
   event.preventDefault()
   resultsList.empty();
@@ -151,7 +151,7 @@ function getApi(event) {
         })
       }
     });
-    
+
 }
 searchButton.on('click', getApi);
 
