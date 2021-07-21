@@ -16,7 +16,6 @@ body {
 
 header {
     background: var(--header-color);
-    display: flex-end;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 19px -5px var(--gray-color-dark);
@@ -33,14 +32,14 @@ h1 {
 
 nav a{
     color: var(--base-color);
-    font-size: 18px;;
+    font-size: 18px;
     transition: .25s;
     font-weight: bold;
 }
 
 
 /* Off-canvas button toggle */
-button[data-toggle="offCanvas"] {
+/* button[data-toggle="offCanvas"] {
     float: right;
     border-radius: 10px;
     background-color: #30c5be69;
@@ -48,17 +47,13 @@ button[data-toggle="offCanvas"] {
     transition: .25s;
     font-weight: bold;
     margin: 1px 1px 1rem 1;
-}
+} */
 
 .off-canvas {
-    /* background-color:rgba(56, 150, 163, 0.849); */
     background-color:rgb(56, 150, 163);
-
-    /* background-color: rgb(7, 30, 34); */
 }
 
 #favorites {
-    /* border-left: 1px solid black; */
     height: 100vh;
 }
 
@@ -223,36 +218,6 @@ li {
     font-weight: bold;
     padding: 20px;
 }
-/* Media queries styles */
-@media only screen and (min-width: 768px) {
-    header {
-        padding: 20px;
-    }
-    .about-us {
-        width: 60%;
-    }
-    .search-books input {
-        width: 450px;
-    }
-    .search-books textarea {
-        width: 450px;
-    }
-    @media only screen and (max-width: 1024px) {
-        .bestseller {
-            width: 90%;
-        }
-    }
-}
-
-@media only screen and (max-width: 640px) {
-    h1 {
-        font-size: 40px;
-    }
-    .nav-links {
-        display: flex;
-        justify-content: flex-end;
-    }
-}
 
 /* favorite section html */
 
@@ -347,3 +312,35 @@ label {
 #previous-searches h4{
     font-family: cursive;
 }
+
+/* Media queries styles */
+@media only screen and (min-width: 768px) {
+    header {
+        padding: 20px;
+    }
+    .about-us {
+        width: 60%;
+    }
+    .search-books input {
+        width: 450px;
+    }
+    .search-books textarea {
+        width: 450px;
+    }
+    @media only screen and (max-width: 1024px) {
+        .bestseller {
+            width: 90%;
+        }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    h1 {
+        font-size: 40px;
+    }
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
