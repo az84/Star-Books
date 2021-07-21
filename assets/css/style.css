@@ -9,6 +9,10 @@
     --button-secondary-color: grey;
 }
 
+body {
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: cursive;
+}
 
 header {
     background: #30C5BE;
@@ -16,7 +20,7 @@ header {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 19px -5px var(--gray-color-dark);
-    font-family: cursive;
+    /* font-family: cursive; */
 }
 /* H1 booksearch styles */
 
@@ -82,12 +86,12 @@ button[data-toggle="offCanvas"] {
     flex-direction: column;
     margin: 20px auto;
     width: 60%;
-    font-family: cursive;
+    /* font-family: cursive; */
 }
 
 h2 {
     font-family: cursive;
-}
+} 
 /* search */
 .search_books {
     margin-top: 20px;
@@ -118,7 +122,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: cursive;
+    /* font-family: cursive; */
 }
 
 .search_books input {
