@@ -13,6 +13,7 @@
 body {
     /* font-family: 'Roboto', sans-serif; */
     font-family: cursive;
+    background-image: url('../images/paper.jpeg');
 }
 
 header {
@@ -57,11 +58,13 @@ nav a{
 
 label {
     font-size: 20px;
+    font-weight: bold;
 }
 
 h2 {
     font-family: cursive;
     font-size: 32px;
+    font-weight: bold;
 } 
 /* Search */
 .search_books {
@@ -75,6 +78,8 @@ h2 {
 
 p {
     font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 /* Google API Search styles */
@@ -126,16 +131,17 @@ p {
 
 /* Previous searches stylings */
 #previous-searches {
-    border-style: outset;
-    border-color: #30C5BE;
+    /* border-style: outset; */
+    /* border-color: #30C5BE; */
     margin-left: 30px;
     width: 40%;
-    background-image: url('../images/crumpled-white-paper.png');
-    background-size: cover;
+    
+    /* background-size: cover; */
 }
 
 #previous-searches h4{
     font-family: cursive;
+    font-weight: bold;
 }
 
 #previous-searches button {
@@ -257,7 +263,7 @@ li {
 }
 
 /* Media queries styles */
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 675px) {
     header {
         padding: 10px;
     }
