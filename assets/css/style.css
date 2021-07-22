@@ -11,8 +11,9 @@
 }
 
 body {
+    font-family: 'Playfair Display', serif;
     /* font-family: 'Roboto', sans-serif; */
-    font-family: cursive;
+    /* font-family: cursive; */
     background-image: url('../images/paper.jpeg');
 }
 
@@ -62,7 +63,8 @@ label {
 }
 
 h2 {
-    font-family: cursive;
+    font-family: 'Playfair Display', serif;
+    /* font-family: cursive; */
     font-size: 32px;
     font-weight: bold;
 } 
@@ -90,6 +92,7 @@ p {
     margin: 10px 0;
     justify-content: center;
     align-items: center;
+    font-family: 'Playfair Display', serif;
     /* font-family: cursive; */
 }
 
@@ -141,7 +144,8 @@ p {
 }
 
 #previous-searches h4{
-    font-family: cursive;
+    font-family: 'Playfair Display', serif;
+    /* font-family: cursive; */
     font-weight: bold;
 }
 
@@ -215,6 +219,7 @@ li {
     align-items: center;
     flex-direction: column;
     margin: 20px auto;
+    font-family: 'Playfair Display', serif;
     /* font-family: cursive; */
 }
 .bestseller select {
