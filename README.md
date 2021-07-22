@@ -7,16 +7,16 @@
 * [User Stories](#UserStories)
 
 ## Team Members:
-- Andrew Ungvary
-- Jeff Mullen
-- Alina Zaidi
+* [Andrew Ungvary](https://github.com/aungy5)
+* [Jeff Mullen](https://github.com/jeffMullen)
+* [Alina Zaidi](https://github.com/az84)
 
 ***
 ## Introduction:
 
 For our book search project, we decided to create a site that utilizes the Google Books API and the NYT Books API to bring the user a wide variety of books they can read based on their input. The user is able to search for topics and have a list of books about that topic dynamically generated on the page. After the results are generated, the user can click on the various books to learn more about them, as on click they will be redirected to a google books page with further information on the selected book. The user is also able to select a NYT best seller list to view, and it will be dynamically generated in the best seller list section. 
 
-**Link to our website:** 
+**Link to our website:** []()
 
 ***
 ## Summary:
