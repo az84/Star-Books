@@ -103,6 +103,14 @@ function clear2(event) {
 }
 clearPrevSearch.on('click', clear2);
 
+function checkInputValue() {
+  if (searchInput.val() === '') {
+    return;
+  } else {
+    getApi();
+  }
+}
+
 // || Retrieving results from search and displaying on screen
 function getApi(event) {
   // event.preventDefault()
@@ -111,9 +119,16 @@ function getApi(event) {
   var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput;
   fetch(requestUrl)
     .then(function (response) {
-      return response.json();
+      if (response.status === 400) {
+        // || Message displaying that city is invalid
+        searchInput.val('');
+        return;
+      } else {
+        return response.json();
+      }
     })
     .then(function (response) {
+      saveSearchItem();
       //var prevSearch = $("#previous-searches-list-results").addClass("list-group-item");
       //prevSearch.append("<li>" + searchInput + "</li>");
       //renderPrevSearches();
@@ -171,33 +186,36 @@ function getApi(event) {
 }
 
 function saveSearchItem() {
-  var searchQuery = searchInput.val();
-  var repeat;
-  for (var i = 0; i < prevSearchArr.length; i++) {
-    if (searchQuery === prevSearchArr[i]) {
-      repeat = true;
-      break;
+  if (searchInput === '') {
+    return;
+  } else {
+    var searchQuery = searchInput.val();
+    var repeat;
+    for (var i = 0; i < prevSearchArr.length; i++) {
+      if (searchQuery === prevSearchArr[i]) {
+        repeat = true;
+        break;
+      }
     }
-  }
 
-  if (!repeat) {
-    var historyDiv = $('<div>');
-    var searchHistoryItem = $('<button>');
-    searchHistoryItem.text(searchQuery);
-    console.log(searchHistoryItem.text());
-    searchHistoryItem.addClass('button secondary');
+    if (!repeat) {
+      var historyDiv = $('<div>');
+      var searchHistoryItem = $('<button>');
+      searchHistoryItem.text(searchQuery);
+      console.log(searchHistoryItem.text());
+      searchHistoryItem.addClass('button secondary');
 
-    historyDiv.append(searchHistoryItem);
-    prevSearchList.append(historyDiv);
+      historyDiv.append(searchHistoryItem);
+      prevSearchList.append(historyDiv);
 
-    prevSearchArr = prevSearchArr.concat(searchQuery);
-    console.log(prevSearchArr);
-    localStorage.setItem('previous-search', JSON.stringify(prevSearchArr));
+      prevSearchArr = prevSearchArr.concat(searchQuery);
+      console.log(prevSearchArr);
+      localStorage.setItem('previous-search', JSON.stringify(prevSearchArr));
+    }
   }
 }
 searchButton.on('click', function () {
-  saveSearchItem();
-  getApi();
+  checkInputValue();
 });
 
 searchInput.on('keyup', function (e) {
@@ -341,6 +359,6 @@ function removeBook() {
 }
 favoriteMenu.on('click', '.label', removeBook);
 
-
+prevSearchList.on('click', 'button', checkInputValue);
 
 
