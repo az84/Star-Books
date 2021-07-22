@@ -18,9 +18,9 @@ var prevSearchArr = [];
 
 // For loop to persist HTML data 
 function loadSearchHistory() {
-  if (localStorage.getItem('search') === null) {
+  if (localStorage.getItem('previous-search') === null) {
   } else {
-    prevSearchArr = prevSearchArr.concat(JSON.parse(localStorage.getItem('search')));
+    prevSearchArr = prevSearchArr.concat(JSON.parse(localStorage.getItem('previous-search')));
     console.log(prevSearchArr);
     for (var i = 0; i < prevSearchArr.length; i++) {
       var searchedItem = $('<div>');
@@ -33,6 +33,7 @@ function loadSearchHistory() {
     }
   }
 }
+loadSearchHistory();
 
 // Key count for local storage
 var keyCount = 0;
@@ -116,7 +117,6 @@ function getApi(event) {
       //var prevSearch = $("#previous-searches-list-results").addClass("list-group-item");
       //prevSearch.append("<li>" + searchInput + "</li>");
       //renderPrevSearches();
-      loadSearchHistory();
       console.log(searchInput);
       //console.log(prevSearch);
       //console.log(requestUrl)
@@ -171,14 +171,17 @@ function getApi(event) {
 }
 
 function saveSearchItem() {
-  var searchedItem = searchInput.val();
+  var searchQuery = searchInput.val();
+  var historyDiv = $('<div>');
   var searchHistoryItem = $('<button>');
-  searchHistoryItem.text(searchedItem);
+  searchHistoryItem.text(searchQuery);
   console.log(searchHistoryItem.text());
+  searchHistoryItem.addClass('button secondary');
 
-  prevSearchList.append(searchHistoryItem);
+  historyDiv.append(searchHistoryItem);
+  prevSearchList.append(historyDiv);
 
-  prevSearchArr = prevSearchArr.concat(searchedItem);
+  prevSearchArr = prevSearchArr.concat(searchQuery);
   console.log(prevSearchArr);
   localStorage.setItem('previous-search', JSON.stringify(prevSearchArr));
 }
@@ -190,6 +193,7 @@ searchButton.on('click', function () {
 
 searchInput.on('keyup', function (e) {
   if (e.keyCode === 13) {
+    saveSearchItem();
     getApi(e)
   }
 })
