@@ -208,8 +208,12 @@ li {
     align-items: center;
     flex-direction: column;
     margin: 20px auto;
-    width: 60%;
     /* font-family: cursive; */
+}
+.bestseller select {
+    width: 20%;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #best-seller-list-results {
@@ -217,6 +221,7 @@ li {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+
 }
 
 #best-seller-list-results .card {
