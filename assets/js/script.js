@@ -10,6 +10,7 @@ var favoriteMenu = $('.favorite-menu');
 var storageArr = [];
 var prevSearchArr = [];
 
+
 //localStorage.setItem('search', JSON.stringify(prevSearchArr));
 //var searchInputVal = $("#search-bar").val();
 //console.log(searchInputVal);
@@ -103,7 +104,7 @@ clearPrevSearch.on('click', clear2);
 
 // || Retrieving results from search and displaying on screen
 function getApi(event) {
-  event.preventDefault()
+  // event.preventDefault()
   var searchInput = $("#search-bar").val();
   console.log(searchInput)
   var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput;
@@ -168,7 +169,24 @@ function getApi(event) {
     });
 
 }
-searchButton.on('click', getApi);
+
+function saveSearchItem() {
+  var searchedItem = searchInput.val();
+  var searchHistoryItem = $('<button>');
+  searchHistoryItem.text(searchedItem);
+  console.log(searchHistoryItem.text());
+
+  prevSearchList.append(searchHistoryItem);
+
+  prevSearchArr = prevSearchArr.concat(searchedItem);
+  console.log(prevSearchArr);
+  localStorage.setItem('previous-search', JSON.stringify(prevSearchArr));
+}
+
+searchButton.on('click', function () {
+  saveSearchItem();
+  getApi();
+});
 
 searchInput.on('keyup', function (e) {
   if (e.keyCode === 13) {
