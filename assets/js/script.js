@@ -20,7 +20,10 @@ var prevSearchArr = [];
 // For loop to persist HTML data 
 function loadSearchHistory() {
   if (localStorage.getItem('previous-search') === null) {
-  } else {
+  } else if (localStorage.getItem('previous-search') === '') {
+
+  }
+  else {
     prevSearchArr = prevSearchArr.concat(JSON.parse(localStorage.getItem('previous-search')));
     console.log(prevSearchArr);
     for (var i = 0; i < prevSearchArr.length; i++) {
@@ -101,6 +104,8 @@ var clearPrevSearch = $("#clearPrev")
 function clear2(event) {
   event.preventDefault()
   prevSearchList.empty();
+  prevSearchArr = [];
+  localStorage.setItem('previous-search', prevSearchArr)
 }
 clearPrevSearch.on('click', clear2);
 
@@ -187,10 +192,12 @@ function getApi(event) {
 }
 
 function saveSearchItem() {
-  if (searchInput === '') {
-    return;
+  if (topicSearched === '') {
+
+  } else if (topicSearched === null) {
+
   } else {
-    var searchQuery = searchInput.val();
+    var searchQuery = topicSearched;
     var repeat;
     for (var i = 0; i < prevSearchArr.length; i++) {
       if (searchQuery === prevSearchArr[i]) {
