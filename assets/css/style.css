@@ -131,11 +131,12 @@ p {
 
 /* Previous searches stylings */
 #previous-searches {
-    /* border-style: outset; */
-    /* border-color: #30C5BE; */
+    border-style: inset;
+    background-color: var(--headings-color);
     margin-left: 30px;
     width: 40%;
-    
+    color: var(--header-color);
+    padding: 20px;
     /* background-size: cover; */
 }
 
