@@ -1,24 +1,43 @@
 /** */
 var searchButton = $("#search-btn");
 var searchInput = $("#search-bar");
+var topicSearched;
 //var resultsText = $("#results-list");
 var resultsList = $("#list-results");
-var PrevSearchList = $("#previous-searches-list-results");
+var prevSearchList = $("#previous-searches-list-results");
 var resultCard = $(".result-card");
 var favoriteLabel = $('.label');
 var favoriteMenu = $('.favorite-menu');
 var storageArr = [];
+var prevSearchArr = [];
+
+
+//localStorage.setItem('search', JSON.stringify(prevSearchArr));
+//var searchInputVal = $("#search-bar").val();
+//console.log(searchInputVal);
+//prevSearchArr = prevSearchArr.concat(searchInputVal);
 
 // For loop to persist HTML data 
-for (var i = 0; i < localStorage.length; i++) {
+function loadSearchHistory() {
+  if (localStorage.getItem('previous-search') === null) {
+  } else if (localStorage.getItem('previous-search') === '') {
 
-  var prevSearch = localStorage.getItem(i);
-  var prevSearchItem = $("#previous-searches-list-results").addClass("list-group-item");
-
-  console.log(localStorage.getItem(i));
-
-  prevSearchItem.append("<li>" + prevSearch + "</li>");
+  }
+  else {
+    prevSearchArr = prevSearchArr.concat(JSON.parse(localStorage.getItem('previous-search')));
+    console.log(prevSearchArr);
+    for (var i = 0; i < prevSearchArr.length; i++) {
+      var searchedItem = $('<div>');
+      var prevSearchBtn = $('<button>');
+      prevSearchBtn.addClass('button secondary');
+      prevSearchBtn.text(prevSearchArr[i]);
+      searchedItem.attr('style', 'margin-bottom: 15px;')
+      searchedItem.append(prevSearchBtn);
+      prevSearchList.append(searchedItem);
+    }
+  }
 }
+loadSearchHistory();
 
 // Key count for local storage
 var keyCount = 0;
@@ -33,7 +52,7 @@ function getFavorites() {
     console.log(storageArr);
 
     for (var i = 0; i < storageArr.length; i++) {
-      var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${storageArr[i]}&key=AIzaSyA3C3fX17i43ey6iVthUwijF1A1MySz0lU`;
+      var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${storageArr[i]}`;
 
       fetch(requestUrl)
         .then(function (response) {
@@ -84,25 +103,43 @@ clearSearch.on('click', clear);
 var clearPrevSearch = $("#clearPrev")
 function clear2(event) {
   event.preventDefault()
-  PrevSearchList.empty();
+  prevSearchList.empty();
+  prevSearchArr = [];
+  localStorage.setItem('previous-search', prevSearchArr)
 }
 clearPrevSearch.on('click', clear2);
 
+function checkInputValue() {
+  if (searchInput.val() === '') {
+    return;
+  } else {
+    getApi();
+  }
+}
+
 // || Retrieving results from search and displaying on screen
 function getApi(event) {
-  event.preventDefault()
-  var searchInput = $("#search-bar").val();
-  console.log(searchInput)
-  var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput + "&key=AIzaSyA3C3fX17i43ey6iVthUwijF1A1MySz0lU";
+  // event.preventDefault()
+
+  console.log(topicSearched);
+  var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + topicSearched;
   fetch(requestUrl)
     .then(function (response) {
-      return response.json();
+      if (response.status === 400) {
+        // || Message displaying that city is invalid
+        // searchInput.val('');
+        return;
+      } else {
+        return response.json();
+      }
     })
     .then(function (response) {
-      var prevSearch = $("#previous-searches-list-results").addClass("list-group-item");
-      prevSearch.append("<li>" + searchInput + "</li>");
+      saveSearchItem();
+      //var prevSearch = $("#previous-searches-list-results").addClass("list-group-item");
+      //prevSearch.append("<li>" + searchInput + "</li>");
+      //renderPrevSearches();
       console.log(searchInput);
-      console.log(prevSearch);
+      //console.log(prevSearch);
       //console.log(requestUrl)
       console.log(response);
       //console.log(response.kind);
@@ -153,11 +190,48 @@ function getApi(event) {
     });
 
 }
-searchButton.on('click', getApi);
+
+function saveSearchItem() {
+  if (topicSearched === '') {
+
+  } else if (topicSearched === null) {
+
+  } else {
+    var searchQuery = topicSearched;
+    var repeat;
+    for (var i = 0; i < prevSearchArr.length; i++) {
+      if (searchQuery === prevSearchArr[i]) {
+        repeat = true;
+        break;
+      }
+    }
+
+    if (!repeat) {
+      var historyDiv = $('<div>');
+      var searchHistoryItem = $('<button>');
+      searchHistoryItem.text(searchQuery);
+      console.log(searchHistoryItem.text());
+      searchHistoryItem.addClass('button secondary');
+
+      historyDiv.append(searchHistoryItem);
+      prevSearchList.append(historyDiv);
+
+      prevSearchArr = prevSearchArr.concat(searchQuery);
+      console.log(prevSearchArr);
+      localStorage.setItem('previous-search', JSON.stringify(prevSearchArr));
+    }
+  }
+}
+
+searchButton.on('click', function () {
+  topicSearched = searchInput.val();
+  checkInputValue();
+});
 
 searchInput.on('keyup', function (e) {
   if (e.keyCode === 13) {
-    getApi(e)
+    topicSearched = searchInput.val();
+    checkInputValue();
   }
 })
 
@@ -242,7 +316,7 @@ function saveBook() {
   console.log(localStorage.getItem('book'));
   console.log('click');
 
-  var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbnRetrieval}&key=AIzaSyA3C3fX17i43ey6iVthUwijF1A1MySz0lU`;
+  var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbnRetrieval}`;
 
   fetch(requestUrl)
     .then(function (response) {
@@ -295,6 +369,9 @@ function removeBook() {
 }
 favoriteMenu.on('click', '.label', removeBook);
 
-
+prevSearchList.on('click', 'button', function () {
+  topicSearched = $(this).text();
+  getApi();
+});
 
 
