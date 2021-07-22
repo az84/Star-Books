@@ -4,15 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Book Search</title>
+    <title>Star Books</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Zurb stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
     <!-- Google font stylesheet -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -35,10 +38,11 @@
         <!-- Your page content lives here -->
         <header class="header grid-container full">
             <div class="grid-x">
-                <h1 class="cell small-7">Book <span class="search"> Search</span></h1>
+                <h1 class="cell small-7">Star Books</h1>
                 <nav class="cell small-5 grid-x">
                     <!-- <li class="cell medium-4 grid-x align-middle"><a href="favorites.html">Favorites</a></li> -->
-                    <li class="cell medium-6 grid-x align-middle nav-links"><a href="#bestseller">Best Seller</a></li>
+                    <li class="cell medium-6 grid-x align-middle nav-links"><a href="#bestseller">Best Sellers</a>
+                    </li>
                     <li class="cell medium-6 grid-x align-middle nav-links"><a data-toggle="offCanvas">Favorites</a>
                     </li>
                 </nav>
@@ -69,7 +73,7 @@
                 <ul id="list-results" class="grid-x"></ul>
             </section>
             <section id="bestseller" class="bestseller">
-                <h2>Best Seller</h2>
+                <h2>Best Sellers</h2>
                 <label for="BSlists">Choose a List:</label>
                 <select id="list-type" name="list-type">
                     <option value="hardcover-fiction">Fiction</option>

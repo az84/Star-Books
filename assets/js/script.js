@@ -46,7 +46,6 @@ var keyCount = 0;
 // || Displaying favorites from local storage
 function getFavorites() {
   if (localStorage.getItem('book') === null) {
-
   } else {
     storageArr = storageArr.concat(JSON.parse(localStorage.getItem('book')));
     console.log(storageArr);
