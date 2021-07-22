@@ -3,21 +3,34 @@ var searchButton = $("#search-btn");
 var searchInput = $("#search-bar");
 //var resultsText = $("#results-list");
 var resultsList = $("#list-results");
-var PrevSearchList = $("#previous-searches-list-results");
+var prevSearchList = $("#previous-searches-list-results");
 var resultCard = $(".result-card");
 var favoriteLabel = $('.label');
 var favoriteMenu = $('.favorite-menu');
 var storageArr = [];
+var prevSearchArr = [];
+
+//localStorage.setItem('search', JSON.stringify(prevSearchArr));
+//var searchInputVal = $("#search-bar").val();
+//console.log(searchInputVal);
+//prevSearchArr = prevSearchArr.concat(searchInputVal);
 
 // For loop to persist HTML data 
-for (var i = 0; i < localStorage.length; i++) {
-
-  var prevSearch = localStorage.getItem(i);
-  var prevSearchItem = $("#previous-searches-list-results").addClass("list-group-item");
-
-  console.log(localStorage.getItem(i));
-
-  prevSearchItem.append("<li>" + prevSearch + "</li>");
+function loadSearchHistory() {
+  if (localStorage.getItem('search') === null) {
+  } else {
+    prevSearchArr = prevSearchArr.concat(JSON.parse(localStorage.getItem('search')));
+    console.log(prevSearchArr);
+      for (var i = 0; i < prevSearchArr.length; i++) {
+          var searchedItem = $('<div>');
+          var prevSearchBtn = $('<button>');
+          prevSearchBtn.addClass('button secondary');
+          prevSearchBtn.text(prevSearchArr[i]);
+          searchedItem.attr('style', 'margin-bottom: 15px;')
+          searchedItem.append(prevSearchBtn);
+          prevSearchList.append(searchedItem);
+      }
+  }
 }
 
 // Key count for local storage
@@ -33,7 +46,7 @@ function getFavorites() {
     console.log(storageArr);
 
     for (var i = 0; i < storageArr.length; i++) {
-      var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${storageArr[i]}&key=AIzaSyA3C3fX17i43ey6iVthUwijF1A1MySz0lU`;
+      var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${storageArr[i]}`; 
 
       fetch(requestUrl)
         .then(function (response) {
@@ -93,16 +106,18 @@ function getApi(event) {
   event.preventDefault()
   var searchInput = $("#search-bar").val();
   console.log(searchInput)
-  var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput + "&key=AIzaSyA3C3fX17i43ey6iVthUwijF1A1MySz0lU";
+  var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput; 
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
-      var prevSearch = $("#previous-searches-list-results").addClass("list-group-item");
-      prevSearch.append("<li>" + searchInput + "</li>");
+      //var prevSearch = $("#previous-searches-list-results").addClass("list-group-item");
+      //prevSearch.append("<li>" + searchInput + "</li>");
+      //renderPrevSearches();
+      loadSearchHistory();
       console.log(searchInput);
-      console.log(prevSearch);
+      //console.log(prevSearch);
       //console.log(requestUrl)
       console.log(response);
       //console.log(response.kind);
@@ -242,7 +257,7 @@ function saveBook() {
   console.log(localStorage.getItem('book'));
   console.log('click');
 
-  var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbnRetrieval}&key=AIzaSyA3C3fX17i43ey6iVthUwijF1A1MySz0lU`;
+  var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbnRetrieval}`
 
   fetch(requestUrl)
     .then(function (response) {
