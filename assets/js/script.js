@@ -21,15 +21,15 @@ function loadSearchHistory() {
   } else {
     prevSearchArr = prevSearchArr.concat(JSON.parse(localStorage.getItem('search')));
     console.log(prevSearchArr);
-      for (var i = 0; i < prevSearchArr.length; i++) {
-          var searchedItem = $('<div>');
-          var prevSearchBtn = $('<button>');
-          prevSearchBtn.addClass('button secondary');
-          prevSearchBtn.text(prevSearchArr[i]);
-          searchedItem.attr('style', 'margin-bottom: 15px;')
-          searchedItem.append(prevSearchBtn);
-          prevSearchList.append(searchedItem);
-      }
+    for (var i = 0; i < prevSearchArr.length; i++) {
+      var searchedItem = $('<div>');
+      var prevSearchBtn = $('<button>');
+      prevSearchBtn.addClass('button secondary');
+      prevSearchBtn.text(prevSearchArr[i]);
+      searchedItem.attr('style', 'margin-bottom: 15px;')
+      searchedItem.append(prevSearchBtn);
+      prevSearchList.append(searchedItem);
+    }
   }
 }
 
@@ -46,7 +46,7 @@ function getFavorites() {
     console.log(storageArr);
 
     for (var i = 0; i < storageArr.length; i++) {
-      var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${storageArr[i]}`; 
+      var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${storageArr[i]}`;
 
       fetch(requestUrl)
         .then(function (response) {
@@ -106,7 +106,7 @@ function getApi(event) {
   event.preventDefault()
   var searchInput = $("#search-bar").val();
   console.log(searchInput)
-  var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput; 
+  var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput;
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
@@ -257,7 +257,7 @@ function saveBook() {
   console.log(localStorage.getItem('book'));
   console.log('click');
 
-  var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbnRetrieval}`
+  var requestUrl = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbnRetrieval}`;
 
   fetch(requestUrl)
     .then(function (response) {
