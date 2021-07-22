@@ -1,6 +1,7 @@
 /** */
 var searchButton = $("#search-btn");
 var searchInput = $("#search-bar");
+var topicSearched;
 //var resultsText = $("#results-list");
 var resultsList = $("#list-results");
 var prevSearchList = $("#previous-searches-list-results");
@@ -99,7 +100,7 @@ clearSearch.on('click', clear);
 var clearPrevSearch = $("#clearPrev")
 function clear2(event) {
   event.preventDefault()
-  PrevSearchList.empty();
+  prevSearchList.empty();
 }
 clearPrevSearch.on('click', clear2);
 
@@ -114,14 +115,14 @@ function checkInputValue() {
 // || Retrieving results from search and displaying on screen
 function getApi(event) {
   // event.preventDefault()
-  var searchInput = $("#search-bar").val();
-  console.log(searchInput)
-  var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + searchInput;
+
+  console.log(topicSearched);
+  var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + topicSearched;
   fetch(requestUrl)
     .then(function (response) {
       if (response.status === 400) {
         // || Message displaying that city is invalid
-        searchInput.val('');
+        // searchInput.val('');
         return;
       } else {
         return response.json();
@@ -214,14 +215,16 @@ function saveSearchItem() {
     }
   }
 }
+
 searchButton.on('click', function () {
+  topicSearched = searchInput.val();
   checkInputValue();
 });
 
 searchInput.on('keyup', function (e) {
   if (e.keyCode === 13) {
-    saveSearchItem();
-    getApi(e)
+    topicSearched = searchInput.val();
+    checkInputValue();
   }
 })
 
@@ -359,6 +362,9 @@ function removeBook() {
 }
 favoriteMenu.on('click', '.label', removeBook);
 
-prevSearchList.on('click', 'button', checkInputValue);
+prevSearchList.on('click', 'button', function () {
+  topicSearched = $(this).text();
+  getApi();
+});
 
 
