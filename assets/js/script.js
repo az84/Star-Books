@@ -172,20 +172,29 @@ function getApi(event) {
 
 function saveSearchItem() {
   var searchQuery = searchInput.val();
-  var historyDiv = $('<div>');
-  var searchHistoryItem = $('<button>');
-  searchHistoryItem.text(searchQuery);
-  console.log(searchHistoryItem.text());
-  searchHistoryItem.addClass('button secondary');
+  var repeat;
+  for (var i = 0; i < prevSearchArr.length; i++) {
+    if (searchQuery === prevSearchArr[i]) {
+      repeat = true;
+      break;
+    }
+  }
 
-  historyDiv.append(searchHistoryItem);
-  prevSearchList.append(historyDiv);
+  if (!repeat) {
+    var historyDiv = $('<div>');
+    var searchHistoryItem = $('<button>');
+    searchHistoryItem.text(searchQuery);
+    console.log(searchHistoryItem.text());
+    searchHistoryItem.addClass('button secondary');
 
-  prevSearchArr = prevSearchArr.concat(searchQuery);
-  console.log(prevSearchArr);
-  localStorage.setItem('previous-search', JSON.stringify(prevSearchArr));
+    historyDiv.append(searchHistoryItem);
+    prevSearchList.append(historyDiv);
+
+    prevSearchArr = prevSearchArr.concat(searchQuery);
+    console.log(prevSearchArr);
+    localStorage.setItem('previous-search', JSON.stringify(prevSearchArr));
+  }
 }
-
 searchButton.on('click', function () {
   saveSearchItem();
   getApi();
