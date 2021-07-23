@@ -95,3 +95,5 @@ https://get.foundation/sites/docs/
 - As a user I want to be able to clear the results section with the click of a button (if none of the books in the results are attractive to me)
 
 ***
+
+![Star Books image](./assets/images/star-books.png)
