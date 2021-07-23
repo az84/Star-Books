@@ -1,8 +1,6 @@
-/** */
 var searchButton = $("#search-btn");
 var searchInput = $("#search-bar");
 var topicSearched;
-//var resultsText = $("#results-list");
 var resultsList = $("#list-results");
 var prevSearchList = $("#previous-searches-list-results");
 var resultCard = $(".result-card");
@@ -12,12 +10,8 @@ var storageArr = [];
 var prevSearchArr = [];
 
 
-//localStorage.setItem('search', JSON.stringify(prevSearchArr));
-//var searchInputVal = $("#search-bar").val();
-//console.log(searchInputVal);
-//prevSearchArr = prevSearchArr.concat(searchInputVal);
 
-// For loop to persist HTML data 
+// || Displaying search history to page
 function loadSearchHistory() {
   if (localStorage.getItem('previous-search') === null) {
   } else if (localStorage.getItem('previous-search') === '') {
@@ -118,7 +112,6 @@ function checkInputValue() {
 
 // || Retrieving results from search and displaying on screen
 function getApi(event) {
-  // event.preventDefault()
 
   console.log(topicSearched);
   var requestUrl = "https://www.googleapis.com/books/v1/volumes?q=" + topicSearched;
@@ -126,7 +119,6 @@ function getApi(event) {
     .then(function (response) {
       if (response.status === 400) {
         // || Message displaying that city is invalid
-        // searchInput.val('');
         return;
       } else {
         return response.json();
@@ -134,17 +126,9 @@ function getApi(event) {
     })
     .then(function (response) {
       saveSearchItem();
-      //var prevSearch = $("#previous-searches-list-results").addClass("list-group-item");
-      //prevSearch.append("<li>" + searchInput + "</li>");
-      //renderPrevSearches();
       console.log(searchInput);
-      //console.log(prevSearch);
-      //console.log(requestUrl)
       console.log(response);
-      //console.log(response.kind);
-      //console.log(response.totalItems);
       console.log(response);
-      //console.log(response.items.volumeInfo.authors);
       for (var i = 0; i < response.items.length; i++) {
         var bookCard = document.createElement('li');
         bookCard.setAttribute('class', 'card cell small-2 result-card');
@@ -154,8 +138,6 @@ function getApi(event) {
         linkBook.setAttribute('target', '_blank');
         bookCard.append(linkBook);
 
-        //console.log(response.items[i].volumeInfo);
-        //console.log(response.items[i].volumeInfo.imageLinks.thumbnail);
         var thumbImg = document.createElement('img');
         thumbImg.setAttribute('alt', `${response.items[i].volumeInfo.title}`)
         thumbImg.src = response.items[i].volumeInfo.imageLinks.thumbnail;
@@ -177,7 +159,6 @@ function getApi(event) {
 
         console.log(response.items[i].volumeInfo.infoLink);
         console.log(resultCard);
-        //console.log(response.items[i].volumeInfo.industryIdentifiers)
       }
       if (searchInput != "") {
         console.log(searchInput);
@@ -190,11 +171,13 @@ function getApi(event) {
 
 }
 
+// || Saving searched topics in local storage
 function saveSearchItem() {
   if (topicSearched === '') {
 
   } else if (topicSearched === null) {
 
+    // || If it has already been searched, don't save it
   } else {
     var searchQuery = topicSearched;
     var repeat;
@@ -205,6 +188,7 @@ function saveSearchItem() {
       }
     }
 
+    // || If it isn't in local storage yet, save it
     if (!repeat) {
       var historyDiv = $('<div>');
       var searchHistoryItem = $('<button>');
@@ -222,11 +206,13 @@ function saveSearchItem() {
   }
 }
 
+// || Search button event listener
 searchButton.on('click', function () {
   topicSearched = searchInput.val();
   checkInputValue();
 });
 
+// || Searching by hitting enter
 searchInput.on('keyup', function (e) {
   if (e.keyCode === 13) {
     topicSearched = searchInput.val();
@@ -237,6 +223,7 @@ searchInput.on('keyup', function (e) {
 var bestSellersList = $("#best-seller-list-results");
 var submitBtn = $("#submit");
 
+// || Calling New York Times API
 function getNytApi(event) {
   event.preventDefault()
 
@@ -249,7 +236,6 @@ function getNytApi(event) {
     const text = listType.options[listType.selectedIndex].value;
 
     if (value) {
-      //document.getElementById("pick").textContent = `Value Selected: ${value}`;
       listValue = listType.options[listType.selectedIndex].value;
       console.log(listValue)
     } else {
@@ -268,7 +254,6 @@ function getNytApi(event) {
       console.log(requestUrlNyt)
 
       for (var i = 0; i < response.results.books.length; i++) {
-        //console.log(response.results.books[i].title)
         var bookCard = document.createElement('li');
         bookCard.setAttribute('class', 'card cell small-2 result-card');
 
@@ -302,6 +287,7 @@ function getNytApi(event) {
       }
     })
 }
+// || New york times submit event listener
 submitBtn.on('click', getNytApi)
 
 // || Saving book to favorites section
@@ -366,8 +352,11 @@ function removeBook() {
     }
   }
 }
+
+// || Event listener on the remove label in Favorites section
 favoriteMenu.on('click', '.label', removeBook);
 
+// || Event listener to search by clicking on previously searched items
 prevSearchList.on('click', 'button', function () {
   topicSearched = $(this).text();
   getApi();
