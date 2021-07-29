@@ -1,5 +1,7 @@
 # Book Search
 
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
 * [Introduction](#Introduction)
 * [Summary](#Summary)
 * [Demo](#Demo)
@@ -97,3 +99,7 @@ https://get.foundation/sites/docs/
 ***
 
 ![Star Books image](./assets/images/star-books.png)
+
+### Mobile Responsive
+
+![Star Books image](./assets/images/mobile-star-books.png)
